@@ -101,11 +101,6 @@ public class Controller extends HttpServlet {
 			service = new HLogoutService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
-		}else if(command.equals("/logoutAll.do")) {
-			service = new GLogoutService();
-			service = new HLogoutService();
-			service.execute(request, response);
-			viewPage = "main/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

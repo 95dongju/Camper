@@ -73,6 +73,9 @@
 					<td><input type="text" name="cgaddr" required="required"></td>
 				</tr>
 				<tr>
+					<td>수영장 <input type="checkbox" name="swim_pool" value="Y"></td>
+				</tr>
+				<tr>
 					<th>캠핑장 메인 사진 *</th>
 					<td><input type="file" name="cg_mainpic" required="required"></td>
 				</tr>
@@ -82,23 +85,23 @@
 				</tr>
 				<tr>
 					<th>캠핑장 사진 1 *</th>
-					<td><input type="file" name="cg_mainpic" required="required"></td>
+					<td><input type="file" name="cg_pic1" required="required"></td>
 				</tr>
 				<tr>
 					<th>캠핑장 사진 2 *</th>
-					<td><input type="file" name="cg_mainpic" required="required"></td>
+					<td><input type="file" name="cg_pic2" required="required"></td>
 				</tr>
 				<tr>
-					<th>캠핑장 사진 3 *</th>
-					<td><input type="file" name="cg_mainpic" required="required"></td>
+					<th>캠핑장 사진 3</th>
+					<td><input type="file" name="cg_pic3"></td>
 				</tr>
 				<tr>
-					<th>캠핑장 사진 4 *</th>
-					<td><input type="file" name="cg_mainpic" required="required"></td>
+					<th>캠핑장 사진 4</th>
+					<td><input type="file" name="cg_pic4"></td>
 				</tr>
 				<tr>
-					<th>캠핑장 사진 5 *</th>
-					<td><input type="file" name="cg_mainpic" required="required"></td>
+					<th>캠핑장 사진 5</th>
+					<td><input type="file" name="cg_pic5"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
