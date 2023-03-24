@@ -1,0 +1,65 @@
+@charset "UTF-8";
+#joinAndModify_table{
+			width: 1000px;
+			margin: 0 auto;
+			padding-top: 100px;
+			text-align: center;
+		}
+		#joinAndModify_table #joinAndModify_form table {
+			width: 1000px;
+		}
+		#joinAndModify_table #joinAndModify_form table caption {
+			font-size: 2em;
+			padding: 10px;
+			color: #596E37;
+		}
+		#joinAndModify_table #joinAndModify_form table tr td {
+			padding: 5px;
+		}
+		#joinAndModify_table #joinAndModify_form table tr td input:not(.btn) {
+			width: 300px;
+			height: 35px;
+			padding: 4px;
+			border: 1px solid gray;
+			box-sizing: border-box;
+		}
+		#joinAndModify_table #joinAndModify_form table tr td input:focus:not(#bispic){
+			outline: 1px solid #596E37;
+		}
+		#joinAndModify_table #joinAndModify_form table .btn {
+			width: 300px;
+			height: 40px;
+			border: 1px solid #596E37;
+			background-color: #596E37;
+			color: white;
+			cursor: pointer;
+		}
+		#joinAndModify_table #joinAndModify_form table .btn:hover {
+			border: none;
+			background-color: #92B35E;
+		}
+		#joinAndModify_table #joinAndModify_form table .btn:active {
+			border: none;
+		}
+		#joinAndModify_table #joinAndModify_form table div:not(div[id $= 'pic']){
+			padding-top: 5px;
+			font-size: 0.7em;
+			height: 10px;
+		}
+		#joinAndModify_table #joinAndModify_form table tr td div[id $= 'pic'] {
+			font-size: 0.9em;
+			color: grey;
+			margin-bottom: 5px;
+		}
+		#joinAndModify_table #joinAndModify_form table tr td #hacc_bankname {
+			width: 300px;
+			height: 35px;
+			padding: 4px;
+			border: 1px solid gray;
+			box-sizing: border-box;
+			color: grey;
+		}
+		#joinAndModify_table #joinAndModify_form table div b {
+			color: red;
+			font-weight: normal;
+		}
