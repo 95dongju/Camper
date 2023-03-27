@@ -9,55 +9,8 @@
 	<meta charset="UTF-8">
 	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<link href="${conPath }/css/login.css" rel="stylesheet">
 </head>
-<style>
-	#div_login {
-		padding-top: 100px;
-		text-align: center;
-	}
-	#div_login #login_form{
-		width: 1000px;
-		margin: 0 auto;
-	}
-	#div_login #login_form table {
-		width: 400px;
-		margin: 0 auto;
-	}
-	#div_login #login_form table caption{
-		font-size: 2em;
-		padding: 10px;
-		color: #596E37;
-	}
-	#div_login #login_form table tr td {
-		padding: 5px;
-	}
-	#div_login #login_form table tr td input:not(.btn){
-		width: 300px;
-		height: 35px;
-		padding: 4px;
-		border: 1px solid gray;
-		box-sizing: border-box;
-	}
-	#div_login #login_form table tr td input:focus{
-		outline: 1px solid #596E37;
-	}
-	#div_login #login_form table .btn {
-		width: 300px;
-		height: 40px;
-		border: 1px solid #596E37;
-		background-color: #596E37;
-		color: white;
-		cursor: pointer;
-	}
-	#div_login #login_form table .btn:hover {
-		border: 1px solid #92B35E;
-		background-color: #92B35E;
-	}
-	#div_login #login_form table tr td a {
-		font-size: 0.8em;
-		color: grey;
-	}
-</style>
 <script>
 	window.onload = function(){
 		document.getElementById('guest_login').onclick = function(){

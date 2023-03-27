@@ -25,14 +25,14 @@
 	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 		<div id="div_login">
-			<form action="${conPath }/loginHost.do" method="post" id="login_form">
+			<form action="${conPath}/hostLogin.do" method="post" id="login_form">
 				<table>
 					<caption>호스트 로그인</caption>
 					<tr>
-						<td><input type="text" id="mid" required="required" placeholder="아이디" value="${s_hid }"></td>
+						<td><input type="text" name="mid" id="mid" required="required" placeholder="아이디" value="${s_hid }"></td>
 					</tr>
 					<tr>
-						<td><input type="password" id="mpw" required="required" placeholder="비밀번호"></td>
+						<td><input type="password" name="mpw" id="mpw" required="required" placeholder="비밀번호"></td>
 					</tr>
 					<tr>
 						<td>

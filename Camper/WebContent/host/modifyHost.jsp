@@ -32,6 +32,10 @@
 					});					
 				}
 			});
+			$('#mpw').keyup(function(){
+				var mpw = $(this).val();
+				
+			});
 			$('#mpwNew, #mpwNewChk').keyup(function(){
 	  			var pw = $('#mpwNew').val();
 	  			var pwChk = $('#mpwNewChk').val();
@@ -96,9 +100,15 @@
 	</script>
 </head>
 <body>
+	<c:if test="${empty host}">
+		<script>
+			alert('로그인 후 이용 가능합니다.');
+			location.href='${conPath}/member/login.jsp';
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="joinAndModify_table">
-		<form action="${conPath }/hostJoin.do" method="post" id="joinAndModify_form" enctype="multipart/form-data">
+		<form action="${conPath }/hostModify.do" method="post" id="joinAndModify_form" enctype="multipart/form-data">
 			<table>
 				<caption>호스트 정보 수정</caption>
 				<tr>
@@ -137,6 +147,7 @@
 				<tr>
 					<td>
 						<input type="password" name="mpwNewChk" id="mpwNewChk" placeholder="변경 비밀번호 확인 ">
+						<div id="mpwChkResult"> &nbsp; </div>
 					</td>
 				</tr>
 				<tr>
@@ -152,7 +163,7 @@
 				</tr>
 				<tr>
 					<td>
-						<div id="div_bispic">사업자등록증 *</div>
+						<div id="div_bispic_title">사업자등록증 *</div>
 						<input type="file" name="bispic" id="bispic" required="required" value="${host.s_hbis_pic }">
 						<div id="div_bispic_desc"> ※ 5MB 이하의 파일만 첨부 가능합니다. </div>
 					</td>
@@ -164,7 +175,8 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text">
+						<div id="div_bankname_title">선택한 은행 </div>
+						<input type="text" value="${host.s_hacc_bankname }">
 					</td>
 				</tr>
 				<tr>
@@ -196,7 +208,7 @@
 				</tr>
 				<tr>
 					<td>
-						<div id="div_accpic"> 통장 사본 *</div>
+						<div id="div_accpic_title"> 통장 사본 *</div>
 						<input type="file" name="accpic" id="accpic" required="required">
 						<div id="div_accpic_desc"> ※ 5MB 이하의 파일만 첨부 가능합니다. </div>
 					</td>

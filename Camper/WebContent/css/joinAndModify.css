@@ -41,12 +41,12 @@
 		#joinAndModify_table #joinAndModify_form table .btn:active {
 			border: none;
 		}
-		#joinAndModify_table #joinAndModify_form table div:not(div[id $= 'pic']){
+		#joinAndModify_table #joinAndModify_form table div:not(div[id $= '_title']){
 			padding-top: 5px;
 			font-size: 0.7em;
 			height: 10px;
 		}
-		#joinAndModify_table #joinAndModify_form table tr td div[id $= 'pic'] {
+		#joinAndModify_table #joinAndModify_form table tr td div[id $= '_title'] {
 			font-size: 0.9em;
 			color: grey;
 			margin-bottom: 5px;

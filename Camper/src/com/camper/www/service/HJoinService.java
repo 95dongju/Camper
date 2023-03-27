@@ -24,7 +24,7 @@ public class HJoinService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int result = 0;
 		String path = request.getRealPath("bisnisUpload");
-		int maxSize = 1024*1024*5;
+		int maxSize = 1024*1024*10;
 		String[] bpics = {"", ""};
 		MultipartRequest mRequest = null;
 		try {
@@ -46,7 +46,7 @@ public class HJoinService implements Service {
 			if(serverFile.exists()) {
 				try {
 					is = new FileInputStream(serverFile);
-					os = new FileOutputStream("C:\\JU\\source\\08_1stProject\\PersonalProject\\WebContent\\bisnisUpload\\"+imgfile);
+					os = new FileOutputStream("C:\\JU\\source\\08_1stProject\\Camper\\WebContent\\bisnisUpload\\"+imgfile);
 					byte[] bs = new byte[(int)serverFile.length()];
 					while(true) {
 						int readByteCnt = is.read(bs);

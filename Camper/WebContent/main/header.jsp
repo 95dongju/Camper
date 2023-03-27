@@ -83,8 +83,14 @@
 				<c:if test="${empty guest and empty host and empty admin}">
 					<div class="gnb">
 						<ul>
-							<li><a href="${conPath }/joinView.do">회원가입</a></li>
-							<li><a href="${conPath }/main/joinHostPage.jsp">캠핑장 등록</a></li>
+							<li>
+								<a href="${conPath }/joinView.do">회원가입</a>
+								<ol class="lnb" style="display: none;">
+									<li><a href="">게스트 회원가입</a></li>
+									<li><a href="">호스트 회원가입</a></li>
+								</ol>
+							</li>
+							<li><a href="${conPath }/campgroundRegistView.do">캠핑장 등록</a></li>
 							<li><a href="${conPath }/loginView.do">로그인</a></li>
 						</ul>
 					</div>
@@ -93,7 +99,7 @@
 					<div class="gnb">
 						<ul>
 							<li><a href="${conPath }/mypage.do">마이페이지</a></li>
-							<li><a href="${conPath }/main/joinHostPage.jsp">캠핑장 등록</a></li>
+							<li><a href="${conPath }/campgroundRegist.do">캠핑장 등록</a></li>
 							<li><a href="${conPath }/logoutGuest.do">로그아웃</a></li>
 						</ul>
 					</div>
@@ -103,17 +109,8 @@
 						<ul>
 							<li><a href="${conPath }/mypage.do">마이페이지</a></li>
 							<li><a href="${conPath }/reservationList.do">예약 목록</a></li>
-							<li><a href="${conPath }/myCampground.do">캠핑장 관리</a></li>
+							<li><a href="${conPath }/campgroundListView.do">캠핑장 관리</a></li>
 							<li><a href="${conPath }/logoutHost.do">로그아웃</a></li>
-						</ul>
-					</div>
-				</c:if>
-				<c:if test="${not empty guest and not empty host and empty admin}">
-					<div class="gnb">
-						<ul>
-							<li><a href="${conPath }/reservationList.do">예약 목록</a></li>
-							<li><a href="${conPath }/myCampground.do">캠핑장 관리</a></li>
-							<li><a href="${conPath }/logoutAll.do">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:if>

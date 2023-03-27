@@ -14,6 +14,11 @@ import com.camper.www.service.GLoginService;
 import com.camper.www.service.GLogoutService;
 import com.camper.www.service.GemailConfirmService;
 import com.camper.www.service.GidConfirmService;
+import com.camper.www.service.HCampgroundListService;
+import com.camper.www.service.HGetCampgroundService;
+import com.camper.www.service.HCampgroundRegistService;
+import com.camper.www.service.HCampgroundViewService;
+import com.camper.www.service.HCampsiteRegistService;
 import com.camper.www.service.HJoinService;
 import com.camper.www.service.HJoinViewService;
 import com.camper.www.service.HLoginService;
@@ -101,6 +106,29 @@ public class Controller extends HttpServlet {
 			service = new HLogoutService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
+		// ***************** 호스트 페이지 ********************
+		}else if(command.equals("/campgroundRegistView.do")) {
+			viewPage = "host/campgroundRegist.jsp";
+		}else if(command.equals("/campgroundRegist.do")) {
+			service = new HCampgroundRegistService();
+			service.execute(request, response);
+			viewPage = "/getCampground.do";
+		}else if(command.equals("/getCampground.do")) {
+			service = new HGetCampgroundService();
+			service.execute(request, response);
+			viewPage = "host/campsiteRegist.jsp";
+		}else if(command.equals("/campsiteRegist.do")) {
+			service = new HCampsiteRegistService();
+			service.execute(request, response);
+			viewPage = "/campgroundListView.do";
+		}else if(command.equals("/campgroundListView.do")) {
+			service = new HCampgroundListService();
+			service.execute(request, response);
+			viewPage = "host/campgroundList.jsp";
+		}else if(command.equals("/campgroundView.do")) {
+			service = new HCampgroundViewService();
+			service.execute(request, response);
+			viewPage = "host/campgroundView.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

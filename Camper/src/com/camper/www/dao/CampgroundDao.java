@@ -183,7 +183,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT COUNT(*) CNT FROM HOST_CAMPGROUND WHERE S_HID = ? AND MH.H_DEL_YN= 'N'";
+		String sql = "SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND HC.S_HID = ? AND MH.H_DEL_YN= 'N'";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -356,7 +356,7 @@ public class CampgroundDao {
 		ResultSet rs 			= null;
 		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC "
 				+ "FROM HOST_CAMPGROUND HC, MEMBER_HOST MH "
-				+ "WHERE HC.S_HID = MH.S_HID WHERE MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC";
+				+ "WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);

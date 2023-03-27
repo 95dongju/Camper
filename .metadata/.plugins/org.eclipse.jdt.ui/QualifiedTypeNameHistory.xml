@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="com.camper.www.dao.CampsiteDao"/>
+<fullyQualifiedTypeName name="com.camper.www.dto.CampsiteDto"/>
+<fullyQualifiedTypeName name="com.camper.www.dao.CampgroundDao"/>
+<fullyQualifiedTypeName name="com.camper.www.dto.CampgroundDto"/>
+</qualifiedTypeNameHistroy>

@@ -137,7 +137,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="mtel" id="mtel" required="required" placeholder="휴대폰번호 (- 포함하여 입력) *" value="${mtel }">
+						<input type="text" name="mtel" id="mtel" required="required" placeholder="휴대폰번호 (- 포함하여 입력) *">
 						<div id="mtelConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>

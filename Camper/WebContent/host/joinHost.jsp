@@ -15,11 +15,9 @@
 	<script>
 		$(function(){
 			var patternMid = /^[A-za-z0-9]/g;
-			$('#mid').keyup(function(){
-				var mid = $(this).val();
-				if(!mid){
-					$('#midConfirmResult').html(' &nbsp; ');
-				}else if (!mid.match(patternMid)){
+			var mid = $('#mid').val();
+			if(mid != null){
+				if (!mid.match(patternMid)){
 					$('#midConfirmResult').html('<b>영문자 또는 숫자로 이루어진 아이디를 사용해 주세요</b>');
 				}else if (mid.length < 5){
 					$('#midConfirmResult').html('<b>5글자 이상의 아이디를 사용해 주세요</b>');
@@ -35,7 +33,7 @@
 							$('#midConfirmResult').html(data);
 						},
 					});					
-				}
+				};
 			});
 			var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
 			$('#memail').keyup(function(){
@@ -54,7 +52,7 @@
 							$('#memailConfirmResult').html(data);
 						},
 					});					
-				}
+				};
 			});
 			$('#mpw, #mpwChk').keyup(function(){
 	  			var pw = $('#mpw').val();
@@ -134,7 +132,7 @@
  	  				$('#mtel').focus();
  	  				return false;
  	  			}
- 	  	});
+ 	  		});
 		});
 	</script>
 </head>
