@@ -26,7 +26,7 @@ public class CampgroundDto {
 	private String cg_del_yn;
 	private Timestamp cg_rdate;
 	public CampgroundDto() {}
-	public CampgroundDto(String s_camp_name, String s_camp_desc, String s_camp_addr, String s_hid,
+	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_hid,
 			String s_camp_mainpic, String s_camp_mappic, String s_camp_pic1, String s_camp_pic2, String s_camp_pic3,
 			String s_camp_pic4, String s_camp_pic5, String s_bathroom, String s_showerbooth, String s_store,
 			String s_sink, String s_wifi, String s_playground, String s_with_pet, String s_swim_pool, String cg_del_yn,
@@ -54,10 +54,11 @@ public class CampgroundDto {
 		this.cg_del_yn = cg_del_yn;
 		this.cg_rdate = cg_rdate;
 	}
-	public CampgroundDto(String s_camp_name, String s_camp_desc, String s_camp_addr, String s_camp_mainpic,
+	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_camp_mainpic,
 			String s_camp_mappic, String s_camp_pic1, String s_camp_pic2, String s_camp_pic3, String s_camp_pic4,
 			String s_camp_pic5, String s_bathroom, String s_showerbooth, String s_store, String s_sink, String s_wifi,
 			String s_playground, String s_with_pet, String s_swim_pool) {
+		this.s_camp_no = s_camp_no;
 		this.s_camp_name = s_camp_name;
 		this.s_camp_desc = s_camp_desc;
 		this.s_camp_addr = s_camp_addr;

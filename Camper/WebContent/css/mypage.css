@@ -1,0 +1,55 @@
+@charset "UTF-8";
+#div_mypage {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 100px;
+	text-align: center;
+}
+#div_mypage h2 {
+	font-size: 2em;
+	padding: 10px;
+	color: #596E37;
+}
+#div_mypage #div_myinfo {
+	padding: 20px;
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid #F8F8F8;
+	background-color: #F8F8F8;
+	border-radius: 50px 50px 50px 50px;
+}
+#div_mypage #div_myinfo .member_info {
+	margin: 10px;
+	padding: 30px;
+	border-bottom: 1px solid lightgray;
+}
+#div_mypage #div_myinfo .member_info #member_photo img {
+	width: 130px;
+	height: 130px;
+	border-radius: 30%;
+}
+#div_mypage #div_myinfo .member_info #modify_myinfo a {
+	color: gray;
+	font-size: 0.9em;
+}
+#div_mypage #div_myinfo .member_info #modify_myinfo:hover {
+	text-decoration: underline;
+}
+#div_mypage #div_myinfo .myinfo_lnb {
+	padding-top: 20px;
+	width: 500px;
+	box-sizing: border-box;
+	height: 100px;
+}
+#div_mypage #div_myinfo .myinfo_lnb ul li {
+	float: left;
+	text-align: center;
+	width: 33.3%;
+	box-sizing: border-box;
+}
+#div_mypage #div_myinfo .myinfo_lnb ul li img {
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	opacity: 0.6;
+}

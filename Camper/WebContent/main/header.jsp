@@ -98,8 +98,8 @@
 				<c:if test="${not empty guest and empty host and empty admin}">
 					<div class="gnb">
 						<ul>
-							<li><a href="${conPath }/mypage.do">마이페이지</a></li>
-							<li><a href="${conPath }/campgroundRegist.do">캠핑장 등록</a></li>
+							<li><a href="${conPath }/mypageGuest.do">마이페이지</a></li>
+							<li><a href="${conPath }/campgroundRegistView.do">캠핑장 등록</a></li>
 							<li><a href="${conPath }/logoutGuest.do">로그아웃</a></li>
 						</ul>
 					</div>
@@ -107,7 +107,7 @@
 				<c:if test="${empty guest and not empty host and empty admin}">
 					<div class="gnb">
 						<ul>
-							<li><a href="${conPath }/mypage.do">마이페이지</a></li>
+							<li><a href="${conPath }/mypageHost.do">마이페이지</a></li>
 							<li><a href="${conPath }/reservationList.do">예약 목록</a></li>
 							<li><a href="${conPath }/campgroundListView.do">캠핑장 관리</a></li>
 							<li><a href="${conPath }/logoutHost.do">로그아웃</a></li>

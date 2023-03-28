@@ -2,6 +2,7 @@ package com.camper.www.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.camper.www.dao.CampgroundDao;
 import com.camper.www.dto.CampgroundDto;
@@ -10,10 +11,11 @@ public class HGetCampgroundService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String s_camp_no = request.getParameter("s_camp_no");
+		HttpSession session = request.getSession();
+		CampgroundDto dto = (CampgroundDto)session.getAttribute("camp");
 		CampgroundDao cgDao = CampgroundDao.getInstance();
-		CampgroundDto cgDto = cgDao.cgView(s_camp_no);
-		System.out.println(cgDto);
+		System.out.println(dto.getS_camp_no());
+		CampgroundDto cgDto = cgDao.cgView(dto.getS_camp_no());
 		request.setAttribute("cgDto", cgDto);
 	}
 }

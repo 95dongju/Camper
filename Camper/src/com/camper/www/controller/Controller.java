@@ -106,25 +106,30 @@ public class Controller extends HttpServlet {
 			service = new HLogoutService();
 			service.execute(request, response);
 			viewPage = "main/main.jsp";
-		// ***************** 호스트 페이지 ********************
+		// ********** 게스트/호스트 마이페이지 / 정보 수정 *************
+		}else if(command.equals("/mypageGuest.do")) {
+			viewPage = "guest/mypageGuest.jsp";
+		}else if(command.equals("/mypageHost.do")) {
+			viewPage = "host/mypageHost.jsp";
+		}else if(command.equals("/modifyGuest.do")) {
+			viewPage = "guest/modifyGuest.jsp";	
+		}else if(command.equals("/modifyHost.do")) {
+			viewPage = "host/modifyHost.jsp";	
+			// ***************** 호스트 페이지 ********************
+		}else if(command.equals("/campgroundListView.do")) {
+			service = new HCampgroundListService();
+			service.execute(request, response);
+			viewPage = "host/campgroundList.jsp";
 		}else if(command.equals("/campgroundRegistView.do")) {
 			viewPage = "host/campgroundRegist.jsp";
 		}else if(command.equals("/campgroundRegist.do")) {
 			service = new HCampgroundRegistService();
-			service.execute(request, response);
-			viewPage = "/getCampground.do";
-		}else if(command.equals("/getCampground.do")) {
-			service = new HGetCampgroundService();
 			service.execute(request, response);
 			viewPage = "host/campsiteRegist.jsp";
 		}else if(command.equals("/campsiteRegist.do")) {
 			service = new HCampsiteRegistService();
 			service.execute(request, response);
 			viewPage = "/campgroundListView.do";
-		}else if(command.equals("/campgroundListView.do")) {
-			service = new HCampgroundListService();
-			service.execute(request, response);
-			viewPage = "host/campgroundList.jsp";
 		}else if(command.equals("/campgroundView.do")) {
 			service = new HCampgroundViewService();
 			service.execute(request, response);

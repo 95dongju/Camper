@@ -12,7 +12,8 @@
 	<script>
 		$(function(){
 			$("tr").click(function(){
-				location.href="${conPath}/campgroundView.do?s_hid=${s_hid}";
+				var s_camp_no = $(this).children().eq(0).text();
+				location.href='${conPath}/campgroundView.do?s_camp_no='+s_camp_no+'&pageNum=${pageNum}';
 			});
 		});
 	</script>
@@ -24,7 +25,7 @@
 			text-align: center;
 		}
 		#div_cgList p {
-			font-size: 1.6em;
+			font-size: 1.4em;
 			color: grey;
 			height: 300px;
 			line-height: 300px;
@@ -104,7 +105,7 @@
 				</tr>
 				<c:forEach items="${cgList }" var="cgList">
 				<tr>
-					<td>${cgList.s_camp_no } </td> 
+					<td>${cgList.s_camp_no }</td> 
 					<td>${cgList.s_camp_name }</td>
 				</tr>
 				</c:forEach>

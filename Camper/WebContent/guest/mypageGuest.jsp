@@ -9,22 +9,7 @@
 	<meta charset="UTF-8">
 	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<style>
-		#mypage {
-			width: 1000px;
-			margin: 0 auto;
-			padding-top: 100px;
-			text-align: center;
-		}
-		#mypage table {
-			width: 1000px;
-		}
-		#mypage table caption {
-			font-size: 2em;
-			padding: 10px;
-			color: #596E37;
-		}
-	</style>
+	<link href="${conPath }/css/mypage.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -34,13 +19,24 @@
 			location.href='${conPath}/member/login.jsp';
 		</script>
 	</c:if>
-	<div id="mypage">
-		<table>	
-			<caption>마이페이지</caption>
-			<tr>
-				<td></td>
-			</tr>
-		</table>
+	<div id="div_mypage">
+		<h2>마이페이지</h2>
+		<div id="div_myinfo">
+			<div class="member_info">
+				<p id="member_photo"><img src="${conPath }/img/${guest.s_gphoto}"></p>
+				<br>
+				<p><b>${guest.s_gnick }</b> 님, 안녕하세요!</p>
+				<br>
+				<p id="modify_myinfo"> <a href="${conPath}/modifyGuest.do"> 내 정보 수정 > </a></p>
+			</div>
+			<div class="myinfo_lnb">
+				<ul>
+					<li><a href=""><img src="${conPath }/img/camper_booking_icon.png"><br>예약 내역</a></li>
+					<li><a href=""><img src="${conPath }/img/camper_review_icon.png"><br>나의 후기</a></li>
+					<li><a href=""><img src="${conPath }/img/camper_like_icon.png"><br>찜한 캠핑장</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

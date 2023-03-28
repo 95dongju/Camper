@@ -40,10 +40,6 @@
 		<div id="upper_banner">
 			BANNER
 		</div>
-		<div id="detail_search">
-			<button>위치로 검색</button>
-			<button></button>
-		</div>
 		<div id="">
 			
 		</div>

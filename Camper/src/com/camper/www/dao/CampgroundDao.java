@@ -183,7 +183,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND HC.S_HID = ? AND MH.H_DEL_YN= 'N'";
+		String sql = "SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND HC.S_HID = ? AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N'";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -210,7 +210,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NO, S_CAMP_NAME FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH WHERE A.S_HID = MH.S_HID AND A.S_HID = ? AND MH.H_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH WHERE A.S_HID = MH.S_HID AND A.S_HID = ? AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -242,7 +242,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND S_CAMP_NO = ?";
+		String sql = "SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N' AND HC.S_CAMP_NO = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -267,7 +267,7 @@ public class CampgroundDao {
 				String s_playground = rs.getString("s_playground");
 				String s_with_pet = rs.getString("s_with_pet");
 				String s_swim_pool = rs.getString("s_swim_pool");
-				cgView = new CampgroundDto(s_camp_name, s_camp_desc, s_camp_addr, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool);
+				cgView = new CampgroundDto(s_camp_no, s_camp_name, s_camp_desc, s_camp_addr, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

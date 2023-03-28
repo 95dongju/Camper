@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------------
 
 -- 1. 게스트 로그인
-SELECT * FROM MEMBER_GUEST WHERE S_GID='testguest' AND S_GPW='111' AND G_DEL_YN = 'N';
+SELECT * FROM MEMBER_GUEST WHERE S_GID='testguest' AND S_GPW='1' AND G_DEL_YN = 'N';
 
 -- 2. 아이디로 DTO 가져오기
 SELECT * FROM MEMBER_GUEST WHERE S_GID='testguest';
@@ -16,7 +16,7 @@ SELECT * FROM MEMBER_GUEST WHERE S_GEMAIL='test@mail.com';
 
 -- 5. 게스트 회원가입
 INSERT INTO MEMBER_GUEST 
-    VALUES ('testguest', 'test@mail.com', '111', '게스트', '게스트', '010-0000-0000','NOIMG.jpg', 'G', 'N', SYSDATE); 
+    VALUES ('testguest', 'test@mail.com', '111', '게스트', '게스트', '010-0000-0000','noprofile.jpg', 'G', 'N', SYSDATE); 
     
 -- 6. 게스트 정보 수정
 UPDATE MEMBER_GUEST SET S_GEMAIL = ?, 
@@ -99,8 +99,8 @@ SELECT * FROM MEMBER_HOST WHERE S_HBIS_NUM = '111-1111-1111';
 
 -- 6. 호스트 가입
 INSERT INTO MEMBER_HOST VALUES
-    ('host', 'host@mail.com', '111', '최명희', '010-1111-1111', '지리산유기농식품영농조합법인', '613-81-58971', 'bispic.jpg', '경남 산청군 시천면 지리산대로1478번길 31-10', '1111-1111-111111', 'account.jpg', 'null.jpg', 'N', 'N', SYSDATE);
-
+    ('host', 'host@mail.com', '111', '최명희', '010-1111-1111', '지리산유기농식품영농조합법인', '613-81-58971', 'bispic.jpg', '경남 산청군 시천면 지리산대로1478번길 31-10', '농협', '1111-1111-111111', 'account.jpg', 'noprofile.jpg', 'N', 'N', SYSDATE);
+commit;
 -- 7. 호스트 정보 수정
 UPDATE MEMBER_HOST SET S_HEMAIL = 'test@host.com',
                         S_HPW = '121',
@@ -111,7 +111,7 @@ UPDATE MEMBER_HOST SET S_HEMAIL = 'test@host.com',
                         S_HADDR = '강원도 홍천 한우마을',
                         S_HACCOUNT = '3333-222233-12212',
                         S_HACC_PIC = 'test.jpg',
-                        S_HPIC = 'test.jpg'
+                        S_HPIC = 'noprofile.jpg'
                     WHERE S_HID = 'host1';
 SELECT * FROM MEMBER_HOST;
 
@@ -131,8 +131,8 @@ INSERT INTO HOST_CAMPGROUND
     VALUES ('CG'||TO_CHAR(HOST_CAMPGROUND_NO_SEQ.NEXTVAL), '산마루캠핑장', '산마루캠핑장입니다', '경남 산청군 시천면 지리산대로1478번길 31-10', 'host1', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
 commit;
 -- 2. 캠핑장 삭제
-UPDATE HOST_CAMPSITE SET CS_DEL_YN = 'N' WHERE S_SITE_NO = '111111';
-UPDATE HOST_CAMPGROUND SET CG_DEL_YN = 'N' WHERE S_CAMP_NO = '111112';
+UPDATE HOST_CAMPSITE SET CS_DEL_YN = 'Y' WHERE S_SITE_NO = 'CS111113';
+UPDATE HOST_CAMPGROUND SET CG_DEL_YN = 'Y' WHERE S_CAMP_NO = 'CG111111';
 
 -- 3. 캠핑장 정보 수정
 UPDATE HOST_CAMPGROUND SET S_CAMP_NAME = '감자마루캠핑', 
@@ -156,14 +156,13 @@ UPDATE HOST_CAMPGROUND SET S_CAMP_NAME = '감자마루캠핑',
                         WHERE S_CAMP_NO = '111111';
 
 -- 4. 내 캠핑장 수
-SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND HC.S_HID = 'host' AND MH.H_DEL_YN= 'N';
+SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND HC.S_HID = 'host' AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N';
 
 -- 5. 등록된 내 캠핑장 목록
-SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH WHERE A.S_HID = MH.S_HID AND A.S_HID = 'host1' AND MH.H_DEL_YN = 'N') WHERE RN BETWEEN 1 AND 2;
-
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH WHERE A.S_HID = MH.S_HID AND A.S_HID = 'host' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN 1 AND 10;
+UPDATE HOST_CAMPGROUND SET CG_DEL_YN = 'Y' WHERE S_HID = 'host';
 -- 6. 캠핑장 상세 보기
-SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND S_CAMP_NO = '111111';
-
+SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N' AND HC.S_CAMP_NO = 'CG111111';
 --------------------------------------------------------------------------------
 -------------------------------- CAMPSITE --------------------------------------
 --------------------------------------------------------------------------------
@@ -184,7 +183,7 @@ UPDATE HOST_CAMPSITE SET S_SITENAME = '데크2',
 SELECT S_SITENAME, S_SITEPRICE FROM HOST_CAMPSITE HCS, HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HCS.S_CAMP_NO = HC.S_CAMP_NO AND MH.H_DEL_YN = 'N' AND HC.S_HID = MH.S_HID AND HC.S_CAMP_NO = 'CS111121' ORDER BY CS_RDATE;
 
 SELECT * FROM MEMBER_GUEST WHERE S_GID = 'testguest' AND G_DEL_YN = 'Y';
-SELECT * FROM HOST_CAMPGROUND;
+SELECT * FROM HOST_CAMPSITE;
 
 --------------------------------------------------------------------------------
 ------------------------------ BOARD REVIEW ------------------------------------

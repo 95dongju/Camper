@@ -204,7 +204,7 @@ public class HostDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO MEMBER_HOST VALUES " + 
-				"    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', 'N', SYSDATE)";
+				"    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'noprofile.jpg', 'N', 'N', SYSDATE)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -220,7 +220,6 @@ public class HostDao {
 			pstmt.setString(10, host.getS_hacc_bankname());
 			pstmt.setString(11, host.getS_haccount());
 			pstmt.setString(12, host.getS_hacc_pic());
-			pstmt.setString(13, host.getS_hpic());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

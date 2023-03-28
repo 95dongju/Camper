@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<style>
 		#div_cg_rgst {
@@ -32,6 +32,10 @@
 			padding: 20px;
 			box-sizing: border-box;
 			border-raius: 10px 10px 10px 10px;
+		}
+		#div_cg_rgst form fieldset p {
+			font-size: 0.9em;
+			color: gray;
 		}
 		#div_cg_rgst form fieldset table {
 			margin: 0 auto;
@@ -99,15 +103,15 @@
 				<table>
 					<tr>
 						<td>캠핑장 이름 <b>*</b></td>
-						<td><input type="text" name="cgname" required="required"></td>
+						<td><input type="text" name="cgname" required="required" placeholder="캠핑장 이름을 입력해 주세요"></td>
 					</tr>
 					<tr>
 						<td>캠핑장 설명 <b>*</b></td>
-						<td><input type="text" name="cgdesc" required="required"></td>
+						<td><input type="text" name="cgdesc" required="required" placeholder="캠핑장에 대한 간단한 소개글을 입력해 주세요"></td>
 					</tr>
 					<tr>
 						<td>캠핑장 주소 <b>*</b></td>
-						<td><input type="text" name="cgaddr" required="required"></td>
+						<td><input type="text" name="cgaddr" required="required" placeholder="캠핑장 주소를 입력해 주세요"></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -128,6 +132,7 @@
 			<br>
 			<fieldset>
 				<legend>캠핑장 사진 <b>*</b></legend>
+				<p>※ 별표(*) 표시된 곳에는 반드시 캠핑장 사진을 첨부해 주세요</p>
 				 <table>
 				 	<tr>
 						<td>캠핑장 메인 사진 <b>*</b></td>

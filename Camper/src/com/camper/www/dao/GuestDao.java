@@ -168,7 +168,7 @@ public class GuestDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO MEMBER_GUEST " + 
-				"    VALUES (?, ?, ?, ?, ?, ?, ?, 'G', 'N', SYSDATE)";
+				"    VALUES (?, ?, ?, ?, ?, ?, 'noprofile.jpg', 'G', 'N', SYSDATE)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -178,7 +178,6 @@ public class GuestDao {
 			pstmt.setString(4, guest.getS_gname());
 			pstmt.setString(5, guest.getS_gnick());
 			pstmt.setString(6, guest.getS_gtel());
-			pstmt.setString(7, guest.getS_gphoto());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

@@ -35,13 +35,12 @@ public class CampsiteDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO HOST_CAMPSITE " + 
-				"    VALUES ('CS'||TO_CHAR(HOST_CAMPSITE_NO_SEQ.NEXTVAL), ?, ?, ?, 'N', SYSDATE)";
+				"    VALUES ('CS'||TO_CHAR(HOST_CAMPSITE_NO_SEQ.NEXTVAL), 'CG'||TO_CHAR(HOST_CAMPGROUND_NO_SEQ.CURRVAL), ?, ?, 'N', SYSDATE)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cs.getS_camp_no());
-			pstmt.setString(2, cs.getS_sitename());
-			pstmt.setString(3, cs.getS_siteprice());
+			pstmt.setString(1, cs.getS_sitename());
+			pstmt.setString(2, cs.getS_siteprice());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

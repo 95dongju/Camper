@@ -11,21 +11,11 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
 		$(function(){
-			var i = 2;
-			console.log('1');
-			console.log('${cgDto}');
-			console.log(2);
+			var i = 1;
 			$('.add_btn').click(function(){
-				$('#cgsite_table').append('<tr><td>'+i+'. 사이트 명 <b>* </b><input type="text" name="sitename_'+i+'"> &nbsp; 사이트 금액 <b>* </b><input type="text" name="siteprice_'+i+'"> 원  &nbsp; </td></tr>');
 				i++;
-			});
-		});
-	</script>
-	<script>
-		$(function(){
-			$('form').submit(function(){
-				var siteCnt = $('#cgsite_table tr').length;
-				location.href='${conPath }/campsiteRegist.do?siteCnt='+siteCnt;
+				$('#cgsite_table').append('<tr><td>'+i+'. 사이트 명 <b>* </b><input type="text" name="sitename_'+i+'"> &nbsp; 사이트 금액 <b>* </b><input type="text" name="siteprice_'+i+'"> 원  &nbsp; </td></tr>');
+				$('.siteCnt').attr('value', i);
 			});
 		});
 	</script>
@@ -87,7 +77,7 @@
 			border: 1px solid gray;
 			box-sizing: border-box;
 		}
-		#div_cg_rgst fieldset .add_btn {
+		#div_cg_rgst .add_btn {
 			width: 80px;
 			height: 30px;
 			border: 1px solid #596E37;
@@ -112,12 +102,12 @@
 		</script>
 	</c:if>
 	<div id="div_cg_rgst">
-		<form action="${conPath }/campsiteRegist.do" method="post" enctype="multipart/form-data">
-			<input type="button" class="add_btn" value="사이트 추가">
-			<input type="text" name="cs_camp_no" id="cs_camp_no" value="${s_camp_no }">
+		<form method="post" action="${conPath }/campsiteRegist.do">
 			<h2>캠핑장 등록하기</h2>
 			<br>
 			<fieldset>
+				<input type="button" class="add_btn" value="사이트 추가">
+				<input type="text" name="siteCnt" class="siteCnt" value="1">
 				<legend>캠핑 사이트 <b>*</b></legend>
 				<table id="cgsite_table">
 					<tr>
