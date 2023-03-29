@@ -10,14 +10,18 @@
 	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link href="${conPath }/css/campgroundView.css" rel="stylesheet">
-	<script>
-		$(function(){
-			$('.btn').click(function(){
-				
-			});
-		});
-	</script>
 </head>
+<style>
+	#wrap_btn p {
+		color: gray;
+		font-size: 0.9em;
+		cursor: pointer;
+		text-align: center;
+	}
+	#wrap_btn p:hover {
+		color: black;
+	}
+</style>
 <body>
 	<c:if test="${empty s_camp_no }">
 		<script>
@@ -36,6 +40,7 @@
 			<div class="camp_info">
 				<h2>${cgView.s_camp_name }</h2>
 				<p>주소: ${cgView.s_camp_addr }</p>
+				<p>연락처: ${cgView.s_camp_tel }</p>
 				<div class="facility">
 					<c:if test="${cgView.s_bathroom eq 'Y' }">
 						<span>#개별화장실</span>
@@ -63,12 +68,31 @@
 					</c:if>
 				</div>
 				<p>설명: ${cgView.s_camp_desc }</p>
-				<form action="${conPath }/reservation.do?s_camp_no=${cgView.s_camp_no}">
-					<div id="wrap_btn">
-						<button class="btn">예약하기</button>
-					</div>
-				</form>
+					<c:if test="${not empty host }">
+						<p>캠핑장 삭제하기</p>
+					</c:if>
 			</div>
+		</div>
+		<div id="div_cg_site">
+			<c:if test="${not empty csList }">
+				<table id="cslist_table">
+					<tr>
+						<c:forEach items="${csList }" var="csList" varStatus="cs">
+							<c:if test="${cs.index%3==0 }">
+							<tr></tr>
+							</c:if>
+								<td>
+									<div class="campsite">
+										${csList.s_sitename }
+										<br>
+										<h5>${csList.s_siteprice }원</h5>
+										<button class="btn" onclick="${conPath}/reservation.do?s_site_no=${csList.s_site_no}">예약하기</button>
+									</div>
+								</td>
+						</c:forEach>
+					</tr>
+				</table>
+			</c:if>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

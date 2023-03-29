@@ -110,16 +110,17 @@ public class CampsiteDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_SITENAME, S_SITEPRICE FROM HOST_CAMPSITE HCS, HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HCS.S_CAMP_NO = HC.S_CAMP_NO AND MH.H_DEL_YN = 'N' AND HC.S_HID = MH.S_HID AND HC.S_CAMP_NO = ? ORDER BY CS_RDATE";
+		String sql = "SELECT S_SITE_NO, S_SITENAME, S_SITEPRICE FROM HOST_CAMPSITE HCS, HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HCS.S_CAMP_NO = HC.S_CAMP_NO AND MH.H_DEL_YN = 'N' AND HC.S_HID = MH.S_HID AND HC.S_CAMP_NO = ? ORDER BY CS_RDATE";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, s_camp_no);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				String s_site_no = rs.getString("s_site_no");
 				String s_sitename = rs.getString("s_sitename");
 				String s_siteprice = rs.getString("s_siteprice");
-				siteList.add(new CampsiteDto(s_sitename, s_siteprice));
+				siteList.add(new CampsiteDto(s_site_no, s_sitename, s_siteprice));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

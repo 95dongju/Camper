@@ -23,7 +23,6 @@ public class HostDto {
 	public HostDto(String s_hid, String s_hemail, String s_hpw, String s_hname, String s_htel, String s_hbis_name, String s_hbis_num,
 			String s_hbis_pic, String s_haddr, String s_hacc_bankname, String s_haccount, String s_hacc_pic, String s_hpic, String h_del_yn,
 			String h_ok_yn, Timestamp h_rdate) {
-		super();
 		this.s_hid = s_hid;
 		this.s_hemail = s_hemail;
 		this.s_hpw = s_hpw;
@@ -40,6 +39,19 @@ public class HostDto {
 		this.h_del_yn = h_del_yn;
 		this.h_ok_yn = h_ok_yn;
 		this.h_rdate = h_rdate;
+	}
+	public HostDto(String s_hid, String s_hpw, String s_hbis_name, String s_hbis_num, String s_hbis_pic, String s_haddr,
+			String s_hacc_bankname, String s_haccount, String s_hacc_pic, String s_hpic) {
+		this.s_hid = s_hid;
+		this.s_hpw = s_hpw;
+		this.s_hbis_name = s_hbis_name;
+		this.s_hbis_num = s_hbis_num;
+		this.s_hbis_pic = s_hbis_pic;
+		this.s_haddr = s_haddr;
+		this.s_hacc_bankname = s_hacc_bankname;
+		this.s_haccount = s_haccount;
+		this.s_hacc_pic = s_hacc_pic;
+		this.s_hpic = s_hpic;
 	}
 	public String getS_hid() {
 		return s_hid;

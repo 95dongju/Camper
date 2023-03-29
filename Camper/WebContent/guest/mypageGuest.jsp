@@ -27,7 +27,7 @@
 				<br>
 				<p><b>${guest.s_gnick }</b> 님, 안녕하세요!</p>
 				<br>
-				<p id="modify_myinfo"> <a href="${conPath}/modifyGuest.do"> 내 정보 수정 > </a></p>
+				<p id="modify_myinfo"> <a href="${conPath}/modifyGuestView.do"> 내 정보 수정 > </a></p>
 			</div>
 			<div class="myinfo_lnb">
 				<ul>

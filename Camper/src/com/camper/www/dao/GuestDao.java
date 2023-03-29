@@ -196,21 +196,17 @@ public class GuestDao {
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE MEMBER_GUEST SET S_GEMAIL = ?, " + 
-				"                        S_GPW = ?, " + 
+		String sql = "UPDATE MEMBER_GUEST SET S_GPW = ?, " + 
 				"                        S_GNICK = ?, " + 
-				"                        S_GTEL = ?, " + 
 				"                        S_GPHOTO = ?" + 
 				"                    WHERE S_GID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, guest.getS_gemail());
-			pstmt.setString(2, guest.getS_gpw());
-			pstmt.setString(3, guest.getS_gnick());
-			pstmt.setString(4, guest.getS_gtel());
-			pstmt.setString(5, guest.getS_gphoto());
-			pstmt.setString(6, guest.getS_gid());
+			pstmt.setString(1, guest.getS_gpw());
+			pstmt.setString(2, guest.getS_gnick());
+			pstmt.setString(3, guest.getS_gphoto());
+			pstmt.setString(4, guest.getS_gid());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

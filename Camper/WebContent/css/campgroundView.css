@@ -24,7 +24,7 @@ a {
 }
 #wrap #div_cg_content {
 	min-width: 1000px;
-	height: 500px;
+	height: 360px;
 	margin: 0 auto;
 	border: 1px solid #F8F8F8;
 	background-color: #F8F8F8;
@@ -85,4 +85,41 @@ a {
 }
 #wrap #div_cg_content .camp_info .btn:active {
 	border: none;
+}
+#wrap #div_cg_site {
+	width: 90%;
+	margin: 0 auto;
+}
+#wrap #div_cg_site table {
+	width: 100%;
+	margin: 0 auto;
+}
+#wrap #div_cg_site table tr td {
+	width: 30%;
+	text-align: center;
+}
+#wrap #div_cg_site table tr td .campsite {
+	padding: 20px;
+	box-sizing: border-box;	
+	border: 1px solid #92B35E;
+	border-radius: 15px;
+	margin: 5px;
+}
+#wrap #div_cg_site table tr td .campsite .btn {
+	border: 1px solid #596E37;
+	background-color: #596E37;
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	width: 130px;
+	height: 30px;
+	color: white;
+	cursor: pointer;
+}
+#wrap #div_cg_site table tr td .campsite .btn:hover {
+	border: none;
+	background-color: #92B35E;
+}
+#wrap #div_cg_site table tr td .campsite h5{
+	margin: 5px;
 }

@@ -27,13 +27,13 @@
 				<br>
 				<p><b>${host.s_hbis_name }</b> 호스트 님, 어서오세요!</p>
 				<br>
-				<p id="modify_myinfo"> <a href="${conPath}/modifyHost.do"> 내 정보 수정 > </a></p>
+				<p id="modify_myinfo"> <a href="${conPath}/modifyHostView.do"> 내 정보 수정 > </a></p>
 			</div>
 			<div class="myinfo_lnb">
 				<ul>
 					<li><a href=""><img src="${conPath }/img/camper_booking_icon.png"><br>예약 현황</a></li>
 					<li><a href=""><img src="${conPath }/img/camper_review_icon.png"><br>내 캠핑장 후기</a></li>
-					<li><a href="${conPath }/campgroundListView.do"><img src="${conPath }/img/camper_campground_icon.png"><br>캠핑장 관리</a></li>
+					<li><a href="${conPath }/campgroundListView.do?s_hid=${host.s_hid}"><img src="${conPath }/img/camper_campground_icon.png"><br>캠핑장 관리</a></li>
 				</ul>
 			</div>
 		</div>

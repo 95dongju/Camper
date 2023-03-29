@@ -18,7 +18,8 @@ public class CampsiteDto {
 		this.cs_rdate = cs_rdate;
 	}
 	
-	public CampsiteDto(String s_sitename, String s_siteprice) {
+	public CampsiteDto(String s_site_no, String s_sitename, String s_siteprice) {
+		this.s_site_no = s_site_no;
 		this.s_sitename = s_sitename;
 		this.s_siteprice = s_siteprice;
 	}

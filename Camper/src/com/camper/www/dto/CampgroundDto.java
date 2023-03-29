@@ -7,6 +7,7 @@ public class CampgroundDto {
 	private String s_camp_name;
 	private String s_camp_desc;
 	private String s_camp_addr;
+	private String s_camp_tel;
 	private String s_hid;
 	private String s_camp_mainpic;
 	private String s_camp_mappic;
@@ -26,7 +27,7 @@ public class CampgroundDto {
 	private String cg_del_yn;
 	private Timestamp cg_rdate;
 	public CampgroundDto() {}
-	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_hid,
+	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_camp_tel, String s_hid,
 			String s_camp_mainpic, String s_camp_mappic, String s_camp_pic1, String s_camp_pic2, String s_camp_pic3,
 			String s_camp_pic4, String s_camp_pic5, String s_bathroom, String s_showerbooth, String s_store,
 			String s_sink, String s_wifi, String s_playground, String s_with_pet, String s_swim_pool, String cg_del_yn,
@@ -35,6 +36,7 @@ public class CampgroundDto {
 		this.s_camp_name = s_camp_name;
 		this.s_camp_desc = s_camp_desc;
 		this.s_camp_addr = s_camp_addr;
+		this.s_camp_tel = s_camp_tel;
 		this.s_hid = s_hid;
 		this.s_camp_mainpic = s_camp_mainpic;
 		this.s_camp_mappic = s_camp_mappic;
@@ -54,7 +56,7 @@ public class CampgroundDto {
 		this.cg_del_yn = cg_del_yn;
 		this.cg_rdate = cg_rdate;
 	}
-	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_camp_mainpic,
+	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_desc, String s_camp_addr, String s_camp_tel, String s_camp_mainpic,
 			String s_camp_mappic, String s_camp_pic1, String s_camp_pic2, String s_camp_pic3, String s_camp_pic4,
 			String s_camp_pic5, String s_bathroom, String s_showerbooth, String s_store, String s_sink, String s_wifi,
 			String s_playground, String s_with_pet, String s_swim_pool) {
@@ -62,6 +64,7 @@ public class CampgroundDto {
 		this.s_camp_name = s_camp_name;
 		this.s_camp_desc = s_camp_desc;
 		this.s_camp_addr = s_camp_addr;
+		this.s_camp_tel = s_camp_tel;
 		this.s_camp_mainpic = s_camp_mainpic;
 		this.s_camp_mappic = s_camp_mappic;
 		this.s_camp_pic1 = s_camp_pic1;
@@ -112,6 +115,12 @@ public class CampgroundDto {
 	}
 	public void setS_camp_addr(String s_camp_addr) {
 		this.s_camp_addr = s_camp_addr;
+	}
+	public String getS_camp_tel() {
+		return s_camp_tel;
+	}
+	public void setS_camp_tel(String s_camp_tel) {
+		this.s_camp_tel = s_camp_tel;
 	}
 	public String getS_hid() {
 		return s_hid;
@@ -224,9 +233,12 @@ public class CampgroundDto {
 	@Override
 	public String toString() {
 		return "CampgroundDto [s_camp_no=" + s_camp_no + ", s_camp_name=" + s_camp_name + ", s_camp_desc=" + s_camp_desc
-				+ ", s_camp_addr=" + s_camp_addr + ", s_hid=" + s_hid + ", s_camp_mainpic=" + s_camp_mainpic
-				+ ", s_camp_mappic=" + s_camp_mappic + ", s_camp_pic1=" + s_camp_pic1 + ", s_camp_pic2=" + s_camp_pic2
-				+ ", s_camp_pic3=" + s_camp_pic3 + ", s_camp_pic4=" + s_camp_pic4 + ", s_camp_pic5=" + s_camp_pic5
+				+ ", s_camp_addr=" + s_camp_addr + ", s_camp_tel=" + s_camp_tel + ", s_hid=" + s_hid
+				+ ", s_camp_mainpic=" + s_camp_mainpic + ", s_camp_mappic=" + s_camp_mappic + ", s_camp_pic1="
+				+ s_camp_pic1 + ", s_camp_pic2=" + s_camp_pic2 + ", s_camp_pic3=" + s_camp_pic3 + ", s_camp_pic4="
+				+ s_camp_pic4 + ", s_camp_pic5=" + s_camp_pic5 + ", s_bathroom=" + s_bathroom + ", s_showerbooth="
+				+ s_showerbooth + ", s_store=" + s_store + ", s_sink=" + s_sink + ", s_wifi=" + s_wifi
+				+ ", s_playground=" + s_playground + ", s_with_pet=" + s_with_pet + ", s_swim_pool=" + s_swim_pool
 				+ ", cg_del_yn=" + cg_del_yn + ", cg_rdate=" + cg_rdate + "]";
 	}
 }

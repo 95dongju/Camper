@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>

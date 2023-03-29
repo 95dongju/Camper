@@ -1,0 +1,86 @@
+@charset "UTF-8";
+#wrap {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#wrap #div_modify_frm {
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+#wrap #div_modify_frm table {
+	width: 500px;
+	margin: 0 auto;
+}
+#wrap #div_modify_frm table caption{
+	font-size: 2em;
+	padding: 10px;
+	color: #596E37;
+}
+#wrap #div_modify_frm table tr td {
+	padding: 5px;
+	color: gray;
+	font-size: 0.9em;
+}
+#wrap #div_modify_frm table tr td input[readonly="readonly"]{
+	color: #AAAAAA;
+}
+#wrap #div_modify_frm table tr td input[readonly="readonly"]:focus {
+	outline:none;
+}
+#wrap #div_modify_frm table tr td input:not(.btn) {
+	width: 300px;
+	height: 35px;
+	padding: 4px;
+	border: 1px solid gray;
+	box-sizing: border-box;
+}
+#wrap #div_modify_frm table .btn {
+	width: 300px;
+	height: 40px;
+	border: 1px solid #596E37;
+	background-color: #596E37;
+	color: white;
+	cursor: pointer;
+}
+#wrap #div_modify_frm table div b {
+	color: red;
+	font-weight: normal;
+}
+#wrap #div_modify_frm table div[id $= 'Result'] {
+	padding-top: 5px;
+	font-size: 0.7em;
+	height: 10px;
+}
+#wrap #div_modify_frm table btn:hover {
+	border: none;
+	background-color: #92B35E;
+}
+#wrap #div_modify_frm table .btn:active {
+	border: none;
+}
+#wrap #div_modify_frm table tr td .photo {
+	position: relative;
+}
+#wrap #div_modify_frm table tr td .photo img {
+	width: 130px;
+	height: 130px;
+	border-radius: 30%;
+}
+#wrap #div_modify_frm table tr td span a {
+	font-size: 0.8em;
+	color: #AAAAAA;
+}
+#wrap #div_modify_frm table tr td .photo .modify_pic {
+	position: absolute;
+	top: 100px;
+	left: 275px;
+}
+#wrap #div_modify_frm table tr td .photo .modify_pic label:hover {
+	cursor: pointer;
+}
+#wrap #div_modify_frm table tr td .photo .modify_pic img {
+	width: 30px;
+	height: 30px;
+}

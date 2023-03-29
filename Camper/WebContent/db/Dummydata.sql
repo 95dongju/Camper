@@ -24,19 +24,19 @@ INSERT INTO MEMBER_HOST VALUES
 SELECT * FROM HOST_CAMPGROUND;
 
 INSERT INTO HOST_CAMPGROUND 
-    VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '자연캠핑장', '자연을 벗삼아', '강원 홍천군 서면 개야마을길 68-27', 'host', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
+    VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '자연캠핑장', '자연을 벗삼아', '강원 홍천군 서면 개야마을길 68-27', '055-2091-2091', 'host', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
 
 
 INSERT INTO HOST_CAMPGROUND 
-    VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '난지캠핑장', '난지캠핑장', '서울특별시 마포구 상암동 495-81', 'host1', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
+    VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '난지캠핑장', '난지캠핑장', '서울특별시 마포구 상암동 495-81', '02-0929-1928', 'host1', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
 
 
 SELECT * FROM HOST_CAMPSITE;
 
 INSERT INTO HOST_CAMPSITE 
-    VALUES (HOST_CAMPSITE_NO_SEQ.NEXTVAL, '111111', '데크1', '50000', 'N', SYSDATE);
+    VALUES (HOST_CAMPSITE_NO_SEQ.NEXTVAL, HOST_CAMPGROUND_NO_SEQ.CURRVAL, '데크1', '50000', 'N', SYSDATE);
 
 INSERT INTO GUEST_REVIEW 
-    VALUES (GUEST_REVIEW_NO_SEQ.NEXTVAL, '111111', 'testguest', '제목', '내용', SYSDATE, '192.1.1.2', 'NOIMG.jpg', NULL, NULL, NULL);
+    VALUES (GUEST_REVIEW_NO_SEQ.NEXTVAL, 'CG111111', 'testguest', '제목', '내용', SYSDATE, '192.1.1.2', 'NOIMG.jpg', NULL, NULL, NULL);
 
 SELECT * FROM GUEST_REVIEW;

@@ -61,13 +61,35 @@
 			 border: none;
 			 outline: none;
 		}
+		header #header_nav .searchbox #searchBtn {
+			cursor: pointer;
+		}
 		header #header_nav .searchbox img {
 			 position: relative;
 			 float: right;
 			 width: 25px;
 			 padding: 2px;
 		}
+		header #header_nav .gnb .lnb {	
+			width: 130px;
+			text-align: center;
+			font-size: 0.9em;
+			background-color: white;
+			position:absolute;
+			display: none;
+		}
+		header #header_nav .gnb ul > li:hover .lnb {
+			display: block;
+		}
 	</style>
+	<script>
+		$(function(){
+			$('#searchBtn').click(function(){
+				var searchtxt = $('#searchtxt').val();
+				location.href= '${conPath}/searchCamp.do?cgName='+searchtxt;
+			});
+		});
+	</script>
 </head>
 <body>
 	<header>
@@ -75,20 +97,20 @@
 				<a href="${conPath }/main.do" class="logo">
 					<img src="${conPath }/img/camperLogo.png"/>
 				</a>
-				<form action="" method="get">
+				<form action="${conPath}/searchCamp.do?" method="get">
 					<div class="searchbox">
-						<input type="text" id="searchtxt" placeholder="캠핑장 명을 검색하세요"/><img src="${conPath }/img/free-icon-magnifying-glass-49116.png">
+						<input type="text" id="searchtxt" placeholder="캠핑장 명을 검색하세요" value="${cgName }"><img src="${conPath }/img/free-icon-magnifying-glass-49116.png" id="searchBtn">
 					</div>
 				</form>
 				<c:if test="${empty guest and empty host and empty admin}">
 					<div class="gnb">
 						<ul>
 							<li>
-								<a href="${conPath }/joinView.do">회원가입</a>
-								<ol class="lnb" style="display: none;">
-									<li><a href="">게스트 회원가입</a></li>
-									<li><a href="">호스트 회원가입</a></li>
-								</ol>
+								<a>회원가입</a>
+								<ul class="lnb">
+									<li><a href="${conPath }/guest/joinGuest.jsp">게스트 회원가입</a></li>
+									<li><a href="${conPath }/host/joinHost.jsp">호스트 회원가입</a></li>
+								</ul>
 							</li>
 							<li><a href="${conPath }/campgroundRegistView.do">캠핑장 등록</a></li>
 							<li><a href="${conPath }/loginView.do">로그인</a></li>
@@ -109,7 +131,7 @@
 						<ul>
 							<li><a href="${conPath }/mypageHost.do">마이페이지</a></li>
 							<li><a href="${conPath }/reservationList.do">예약 목록</a></li>
-							<li><a href="${conPath }/campgroundListView.do">캠핑장 관리</a></li>
+							<li><a href="${conPath }/campgroundListView.do?s_hid=${host.s_hid}">캠핑장 관리</a></li>
 							<li><a href="${conPath }/logoutHost.do">로그아웃</a></li>
 						</ul>
 					</div>

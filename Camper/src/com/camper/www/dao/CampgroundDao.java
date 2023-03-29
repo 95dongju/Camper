@@ -35,29 +35,30 @@ public class CampgroundDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO HOST_CAMPGROUND " + 
-				"    VALUES ('CG'||TO_CHAR(HOST_CAMPGROUND_NO_SEQ.NEXTVAL), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', SYSDATE)";
+				"    VALUES ('CG'||TO_CHAR(HOST_CAMPGROUND_NO_SEQ.NEXTVAL), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', SYSDATE)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cg.getS_camp_name());
 			pstmt.setString(2, cg.getS_camp_desc());
 			pstmt.setString(3, cg.getS_camp_addr());
-			pstmt.setString(4, cg.getS_hid());
-			pstmt.setString(5, cg.getS_camp_mainpic());
-			pstmt.setString(6, cg.getS_camp_mappic());
-			pstmt.setString(7, cg.getS_camp_pic1());
-			pstmt.setString(8, cg.getS_camp_pic2());
-			pstmt.setString(9, cg.getS_camp_pic3());
-			pstmt.setString(10, cg.getS_camp_pic4());
-			pstmt.setString(11, cg.getS_camp_pic5());
-			pstmt.setString(12, cg.getS_bathroom());
-			pstmt.setString(13, cg.getS_showerbooth());
-			pstmt.setString(14, cg.getS_store());
-			pstmt.setString(15, cg.getS_sink());
-			pstmt.setString(16, cg.getS_wifi());
-			pstmt.setString(17, cg.getS_playground());
-			pstmt.setString(18, cg.getS_with_pet());
-			pstmt.setString(19, cg.getS_swim_pool());
+			pstmt.setString(4, cg.getS_camp_tel());
+			pstmt.setString(5, cg.getS_hid());
+			pstmt.setString(6, cg.getS_camp_mainpic());
+			pstmt.setString(7, cg.getS_camp_mappic());
+			pstmt.setString(8, cg.getS_camp_pic1());
+			pstmt.setString(9, cg.getS_camp_pic2());
+			pstmt.setString(10, cg.getS_camp_pic3());
+			pstmt.setString(11, cg.getS_camp_pic4());
+			pstmt.setString(12, cg.getS_camp_pic5());
+			pstmt.setString(13, cg.getS_bathroom());
+			pstmt.setString(14, cg.getS_showerbooth());
+			pstmt.setString(15, cg.getS_store());
+			pstmt.setString(16, cg.getS_sink());
+			pstmt.setString(17, cg.getS_wifi());
+			pstmt.setString(18, cg.getS_playground());
+			pstmt.setString(19, cg.getS_with_pet());
+			pstmt.setString(20, cg.getS_swim_pool());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -123,9 +124,7 @@ public class CampgroundDao {
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE HOST_CAMPGROUND SET S_CAMP_NAME = ? " + 
-				"                            S_CAMP_DESC = ? " + 
-				"                            S_CAMP_ADDR = ? " + 
+		String sql = "UPDATE HOST_CAMPGROUND SET S_CAMP_DESC = ? " + 
 				"                            S_CAMP_MAINPIC = ? " + 
 				"                            S_CAMP_MAPPIC = ? " + 
 				"                            S_CAMP_PIC1 = ? " + 
@@ -145,25 +144,23 @@ public class CampgroundDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cg.getS_camp_name());
-			pstmt.setString(2, cg.getS_camp_desc());
-			pstmt.setString(3, cg.getS_camp_addr());
-			pstmt.setString(4, cg.getS_camp_mainpic());
-			pstmt.setString(5, cg.getS_camp_mappic());
-			pstmt.setString(6, cg.getS_camp_pic1());
-			pstmt.setString(7, cg.getS_camp_pic2());
-			pstmt.setString(8, cg.getS_camp_pic3());
-			pstmt.setString(9, cg.getS_camp_pic4());
-			pstmt.setString(10, cg.getS_camp_pic5());
-			pstmt.setString(11, cg.getS_bathroom());
-			pstmt.setString(12, cg.getS_showerbooth());
-			pstmt.setString(13, cg.getS_store());
-			pstmt.setString(14, cg.getS_sink());
-			pstmt.setString(15, cg.getS_wifi());
-			pstmt.setString(16, cg.getS_playground());
-			pstmt.setString(17, cg.getS_with_pet());
-			pstmt.setString(18, cg.getS_swim_pool());
-			pstmt.setString(19, cg.getS_camp_no());
+			pstmt.setString(1, cg.getS_camp_desc());
+			pstmt.setString(2, cg.getS_camp_mainpic());
+			pstmt.setString(3, cg.getS_camp_mappic());
+			pstmt.setString(4, cg.getS_camp_pic1());
+			pstmt.setString(5, cg.getS_camp_pic2());
+			pstmt.setString(6, cg.getS_camp_pic3());
+			pstmt.setString(7, cg.getS_camp_pic4());
+			pstmt.setString(8, cg.getS_camp_pic5());
+			pstmt.setString(9, cg.getS_bathroom());
+			pstmt.setString(10, cg.getS_showerbooth());
+			pstmt.setString(11, cg.getS_store());
+			pstmt.setString(12, cg.getS_sink());
+			pstmt.setString(13, cg.getS_wifi());
+			pstmt.setString(14, cg.getS_playground());
+			pstmt.setString(15, cg.getS_with_pet());
+			pstmt.setString(16, cg.getS_swim_pool());
+			pstmt.setString(17, cg.getS_camp_no());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -242,7 +239,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N' AND HC.S_CAMP_NO = ?";
+		String sql = "SELECT S_CAMP_NAME, S_CAMP_DESC, S_CAMP_ADDR, S_CAMP_TEL, S_CAMP_MAINPIC, S_CAMP_MAPPIC, S_CAMP_PIC1, S_CAMP_PIC2, S_CAMP_PIC3, S_CAMP_PIC4, S_CAMP_PIC5, S_BATHROOM, S_SHOWERBOOTH, S_STORE, S_SINK, S_WIFI, S_PLAYGROUND, S_WITH_PET, S_SWIM_POOL FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N' AND HC.S_CAMP_NO = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -252,6 +249,7 @@ public class CampgroundDao {
 				String s_camp_name = rs.getString("s_camp_name");
 				String s_camp_desc = rs.getString("s_camp_desc");
 				String s_camp_addr = rs.getString("s_camp_addr");
+				String s_camp_tel = rs.getString("s_camp_tel");
 				String s_camp_mainpic = rs.getString("s_camp_mainpic");
 				String s_camp_mappic = rs.getString("s_camp_mappic");
 				String s_camp_pic1 = rs.getString("s_camp_pic1");
@@ -267,7 +265,7 @@ public class CampgroundDao {
 				String s_playground = rs.getString("s_playground");
 				String s_with_pet = rs.getString("s_with_pet");
 				String s_swim_pool = rs.getString("s_swim_pool");
-				cgView = new CampgroundDto(s_camp_no, s_camp_name, s_camp_desc, s_camp_addr, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool);
+				cgView = new CampgroundDto(s_camp_no, s_camp_name, s_camp_desc, s_camp_addr, s_camp_tel, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -283,18 +281,20 @@ public class CampgroundDao {
 		return cgView;
 	}
 	// 7. 캠핑장 검색 (위치)
-	public ArrayList<CampgroundDto> cgLocList(String cgLoc) {
+	public ArrayList<CampgroundDto> cgLocList(String cgLoc, int startRow, int endRow) {
 		ArrayList<CampgroundDto> cgList = new ArrayList<CampgroundDto>();
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC "
-				+ "FROM HOST_CAMPGROUND HC, MEMBER_HOST MH "
-				+ "WHERE HC.S_HID = MH.S_HID AND S_CAMP_ADDR LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC";
+		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
+				"FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH " + 
+				"WHERE A.S_HID = MH.S_HID  AND S_CAMP_ADDR LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cgLoc);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String s_camp_name = rs.getString("s_camp_name");
@@ -316,18 +316,20 @@ public class CampgroundDao {
 		return cgList;
 	}
 	// 8. 캠핑장 검색 (이름)
-	public ArrayList<CampgroundDto> cgNameList(String cgName) {
+	public ArrayList<CampgroundDto> cgNameList(String cgName, int startRow, int endRow) {
 		ArrayList<CampgroundDto> cgList = new ArrayList<CampgroundDto>();
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC "
-				+ "FROM HOST_CAMPGROUND HC, MEMBER_HOST MH "
-				+ "WHERE HC.S_HID = MH.S_HID AND S_CAMP_NAME LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC";
+		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
+				"FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH " + 
+				"WHERE A.S_HID = MH.S_HID AND S_CAMP_NAME LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cgName);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String s_camp_name = rs.getString("s_camp_name");
@@ -348,25 +350,20 @@ public class CampgroundDao {
 		}
 		return cgList;
 	}
-	// 9. 전체 캠핑장 목록
-	public ArrayList<CampgroundDto> allCgList() {
-		ArrayList<CampgroundDto> cgList = new ArrayList<CampgroundDto>();
+	// 9. 이름으로 검색한 캠핑장 수
+	public int searchNameTotCnt(String cgName) {
+		int totCnt = 0;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC "
-				+ "FROM HOST_CAMPGROUND HC, MEMBER_HOST MH "
-				+ "WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC";
+		String sql = "SELECT COUNT(*) CNT FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN= 'N' AND HC.CG_DEL_YN = 'N' AND S_CAMP_NAME LIKE '%'|| ? ||'%'";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cgName);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String s_camp_name = rs.getString("s_camp_name");
-				String s_camp_addr = rs.getString("s_camp_addr");
-				String s_camp_mainpic =  rs.getString("s_camp_mainpic");
-				cgList.add(new CampgroundDto(s_camp_name, s_camp_addr, s_camp_mainpic));
-			}
+			rs.next();
+			totCnt = rs.getInt(1);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -378,6 +375,6 @@ public class CampgroundDao {
 				System.out.println(e.getMessage());
 			}
 		}
-		return cgList;
+		return totCnt;
 	}
 }

@@ -18,7 +18,6 @@ public class HLoginService implements Service {
 		if(result == HostDao.LOGIN_SUCCESS) {
 			HttpSession session = request.getSession();
 			HostDto host = hDao.getHost(s_hid);
-			session.setAttribute("s_hid", s_hid);
 			session.setAttribute("host", host);
 		}else {
 			request.setAttribute("loginErrorMsg", "아이디와 비밀번호를 확인하세요");

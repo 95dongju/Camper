@@ -10,7 +10,7 @@
 	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
-	<link href="${conPath }/css/joinAndModify.css" rel="stylesheet">
+	<link href="${conPath }/css/join.css" rel="stylesheet">
 	<script>
 		$(function(){
 			var patternMid = /^[A-za-z0-9]/g;
@@ -83,50 +83,46 @@
 	  			}
 	  		});
   		$('form').submit(function(){
-  					var midConfirmResult = $('#midConfirmResult').text().trim();
-  	  			var mpwChkResult = $('#mpwChkResult').text().trim();
-  	  			var memailConfirmResult = $('#memailConfirmResult').text().trim();
-  	  			var mnameConfirmResult = $('#mnameConfirmResult').text().trim();
-	  					var mtelConfirmResult = $('#mtelConfirmResult').text().trim();
-  	  			if(midConfirmResult != '사용 가능한 아이디입니다'){
-  	  				alert('아이디를 확인해 주세요');
-  	  				$('#mid').focus();
-  	  				return false;
-  	  			}else if(mpwChkResult != '비밀번호가 확인되었습니다'){
-  	  				alert('비밀번호를 확인해 주세요');
-  	  				$('#mpw').focus();
-  	  				return false;
-  	  			}else if(memailConfirmResult != '사용 가능한 이메일입니다'){
-  	  				alert('이메일을 확인해 주세요');
-  	  				$('#memail').focus();
-  	  				return false;
-  	  			}else if(mnameConfirmResult != '확인되었습니다'){
-	 	  				alert('이름을 확인해 주세요');
-	 	  				$('#mname').focus();
-	 	  				return false;
-	 	  			}else if(mtelConfirmResult != '확인되었습니다'){
-	 	  				alert('전화번호를 확인해 주세요');
-	 	  				$('#mtel').focus();
-	 	  				return false;
-	 	  			}
-  	  	});
+  			var midConfirmResult = $('#midConfirmResult').text().trim();
+ 	  		var mpwChkResult = $('#mpwChkResult').text().trim();
+ 	  		var memailConfirmResult = $('#memailConfirmResult').text().trim();
+ 	  		var mnameConfirmResult = $('#mnameConfirmResult').text().trim();
+  			var mtelConfirmResult = $('#mtelConfirmResult').text().trim();
+ 	  			if(midConfirmResult != '사용 가능한 아이디입니다'){
+ 	  				alert('아이디를 확인해 주세요');
+ 	  				$('#mid').focus();
+ 	  				return false;
+ 	  			}else if(mpwChkResult != '비밀번호가 확인되었습니다'){
+ 	  				alert('비밀번호를 확인해 주세요');
+ 	  				$('#mpw').focus();
+ 	  				return false;
+ 	  			}else if(memailConfirmResult != '사용 가능한 이메일입니다'){
+ 	  				alert('이메일을 확인해 주세요');
+ 	  				$('#memail').focus();
+ 	  				return false;
+ 	  			}else if(mnameConfirmResult != '확인되었습니다'){
+ 	  				alert('이름을 확인해 주세요');
+ 	  				$('#mname').focus();
+ 	  				return false;
+ 	  			}else if(mtelConfirmResult != '확인되었습니다'){
+ 	  				alert('전화번호를 확인해 주세요');
+ 	  				$('#mtel').focus();
+ 	  				return false;
+ 	  			}
+  	  		});
 		});
-	</script>
-	<script>
-		window.onload = function(){
-			document.getElementById('guest_join_btn').onclick = function(){
-				$('#joinAndModify_form').attr("action", '${conPath}/guestJoin.do').submit();
-			}
-			document.getElementById('host_join_btn').onclick = function(){
-				$('#joinAndModify_form').attr("action", '${conPath}/hostJoinView.do').submit();
-			}
-		}
 	</script>
 </head>
 <body>
+	<c:if test="${not empty guest }">
+		<script>
+			alert('로그인 상태입니다');
+			location.href='${conPath}/main/main.jsp';
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
-	<div id="joinAndModify_table">
-		<form method="post" id="joinAndModify_form">
+	<div id="join_table">
+		<form action="${conPath}/guestJoin.do" method="post" id="join_form">
 			<table>
 				<caption>회원가입</caption>
 				<tr>
@@ -166,12 +162,12 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="button" class="btn" id="guest_join_btn" value="게스트로 회원가입">
+						<input type="submit" class="btn" value="게스트로 회원가입">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="button" class="btn" id="host_join_btn" value="호스트로 회원가입">
+						<input type="button" class="btn" value="호스트로 회원가입" onclick="location.href='${conPath}/host/joinHost.jsp'">
 					</td>
 				</tr>
 			</table>

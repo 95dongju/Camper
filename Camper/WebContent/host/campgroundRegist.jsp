@@ -20,7 +20,7 @@
 		</script>
 	</c:if>
 	<div id="div_cg_rgst">
-		<form action="${conPath }/campgroundRegist.do" method="post" enctype="multipart/form-data">
+		<form action="${conPath }/campgroundRegist.do?s_hid=${host.s_hid}" method="post" enctype="multipart/form-data">
 			<h2>캠핑장 등록하기</h2>
 			<br>
 			<fieldset>
@@ -37,6 +37,10 @@
 					<tr>
 						<td>캠핑장 주소 <b>*</b></td>
 						<td><input type="text" name="cgaddr" required="required" placeholder="캠핑장 주소를 입력해 주세요"></td>
+					</tr>
+					<tr>
+						<td>캠핑장 연락처 <b>*</b></td>
+						<td><input type="text" name="cgtel" required="required" placeholder="캠핑장 연락처를 입력해 주세요"></td>
 					</tr>
 				</table>
 			</fieldset>

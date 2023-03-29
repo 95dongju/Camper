@@ -38,7 +38,7 @@
 	<div id="div_join_host">
 		<img src="${conPath }/img/camper_host_join_page.png">
 		<div id="div_join_host_btn">
-			<button id="join_host" onclick="location.href='${conPath}/hostJoinView.do'">호스트 회원가입</button>
+			<button id="join_host" onclick="location.href='${conPath}/host/joinHost.jsp'">호스트 회원가입</button>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>

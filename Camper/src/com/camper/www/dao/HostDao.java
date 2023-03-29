@@ -212,8 +212,8 @@ public class HostDao {
 			pstmt.setString(2, host.getS_hemail());
 			pstmt.setString(3, host.getS_hpw());
 			pstmt.setString(4, host.getS_hname());
-			pstmt.setString(5, host.getS_hbis_name());
-			pstmt.setString(6, host.getS_htel());
+			pstmt.setString(5, host.getS_htel());
+			pstmt.setString(6, host.getS_hbis_name());
 			pstmt.setString(7, host.getS_hbis_num());
 			pstmt.setString(8, host.getS_hbis_pic());
 			pstmt.setString(9, host.getS_haddr());
@@ -238,9 +238,7 @@ public class HostDao {
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE MEMBER_HOST SET S_HEMAIL = ?, " + 
-				"                        S_HPW = ?, " + 
-				"                        S_HTEL = ?, " + 
+		String sql = "UPDATE MEMBER_HOST S_HPW = ?, " + 
 				"                        S_HBIS_NAME = ?, " + 
 				"                        S_HBIS_NUM = ?, " + 
 				"                        S_HBIS_PIC = ?, " + 
@@ -253,18 +251,16 @@ public class HostDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, host.getS_hemail());
-			pstmt.setString(2, host.getS_hpw());
-			pstmt.setString(3, host.getS_htel());
-			pstmt.setString(4, host.getS_hbis_name());
-			pstmt.setString(5, host.getS_hbis_num());
-			pstmt.setString(6, host.getS_hbis_pic());
-			pstmt.setString(7, host.getS_haddr());
-			pstmt.setString(8, host.getS_hacc_bankname());
-			pstmt.setString(9, host.getS_haccount());
-			pstmt.setString(10, host.getS_hacc_pic());
-			pstmt.setString(11, host.getS_hpic());
-			pstmt.setString(12, host.getS_hid());
+			pstmt.setString(1, host.getS_hpw());
+			pstmt.setString(2, host.getS_hbis_name());
+			pstmt.setString(3, host.getS_hbis_num());
+			pstmt.setString(4, host.getS_hbis_pic());
+			pstmt.setString(5, host.getS_haddr());
+			pstmt.setString(6, host.getS_hacc_bankname());
+			pstmt.setString(7, host.getS_haccount());
+			pstmt.setString(8, host.getS_hacc_pic());
+			pstmt.setString(9, host.getS_hpic());
+			pstmt.setString(10, host.getS_hid());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

@@ -34,13 +34,20 @@ UPDATE MEMBER_GUEST SET G_DEL_YN = 'Y' WHERE S_GID = 'test1' AND S_GPW = '111';
 --------------------------------------------------------------------------------
 
 -- 1. 캠핑장 검색 (위치)
-SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND S_CAMP_ADDR LIKE '%'||'%'||'%' AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC;
+SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC 
+FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH 
+WHERE A.S_HID = MH.S_HID  AND S_CAMP_ADDR LIKE '%'||'%'||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN 1 AND 10;
 
 -- 2. 캠핑장 검색 (이름)
-SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC FROM HOST_CAMPGROUND WHERE S_CAMP_NAME LIKE '%'||'산마루캠핑장'||'%';
+SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC 
+FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH 
+WHERE A.S_HID = MH.S_HID AND S_CAMP_NAME LIKE '%'||'캠핑장'||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN 1 AND 10;
 
--- 3. 전체 캠핑장 목록
-SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC FROM HOST_CAMPGROUND HC, MEMBER_HOST MH WHERE HC.S_HID = MH.S_HID AND MH.H_DEL_YN = 'N' ORDER BY CG_RDATE DESC;
+
+-- 3. 전체 캠핑장 수
+SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC 
+FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH 
+WHERE A.S_HID = MH.S_HID AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN 1 AND 10;
 
 --------------------------------------------------------------------------------
 ------------------------------- RESERVATION ------------------------------------
@@ -102,13 +109,12 @@ INSERT INTO MEMBER_HOST VALUES
     ('host', 'host@mail.com', '111', '최명희', '010-1111-1111', '지리산유기농식품영농조합법인', '613-81-58971', 'bispic.jpg', '경남 산청군 시천면 지리산대로1478번길 31-10', '농협', '1111-1111-111111', 'account.jpg', 'noprofile.jpg', 'N', 'N', SYSDATE);
 commit;
 -- 7. 호스트 정보 수정
-UPDATE MEMBER_HOST SET S_HEMAIL = 'test@host.com',
-                        S_HPW = '121',
-                        S_HTEL = '010-2020-1029',
+UPDATE MEMBER_HOST SET S_HPW = '121',
                         S_HBIS_NAME = '홍석민',
                         S_HBIS_NUM = '182-37-19283',
                         S_HBIS_PIC = 'miehj2.jpg',
                         S_HADDR = '강원도 홍천 한우마을',
+                        S_HACC_BANKNAME = "",
                         S_HACCOUNT = '3333-222233-12212',
                         S_HACC_PIC = 'test.jpg',
                         S_HPIC = 'noprofile.jpg'
@@ -135,9 +141,7 @@ UPDATE HOST_CAMPSITE SET CS_DEL_YN = 'Y' WHERE S_SITE_NO = 'CS111113';
 UPDATE HOST_CAMPGROUND SET CG_DEL_YN = 'Y' WHERE S_CAMP_NO = 'CG111111';
 
 -- 3. 캠핑장 정보 수정
-UPDATE HOST_CAMPGROUND SET S_CAMP_NAME = '감자마루캠핑', 
-                            S_CAMP_DESC = '공기 좋고 물 좋아요',
-                            S_CAMP_ADDR = '강원도 감자마을 192번길',
+UPDATE HOST_CAMPGROUND SET S_CAMP_DESC = '공기 좋고 물 좋아요',
                             S_CAMP_MAINPIC = 'gamja.jpg',
                             S_CAMP_MAPPIC = 'gam.jpg',
                             S_CAMP_PIC1 = '1.jpg',
@@ -192,6 +196,7 @@ SELECT * FROM HOST_CAMPSITE;
 -- GUEST
 
 -- 1. 전체 리뷰 목록
+
 SELECT S_GNAME, S_REV_TITLE, S_REV_CONTENT, D_RDATE, S_REV_MAINPIC FROM MEMBER_GUEST G, GUEST_REVIEW R WHERE G.S_GID = R.S_GID AND G.G_DEL_YN = 'N' ORDER BY D_RDATE DESC;
 
 -- 2. 특정 캠핑장 리뷰 목록

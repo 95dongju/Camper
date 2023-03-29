@@ -27,7 +27,7 @@ public class HCampgroundListService implements Service {
 		int endRow   = startRow + PAGESIZE - 1;
 		CampgroundDao cDao = CampgroundDao.getInstance();
 		HttpSession session = request.getSession();
-		String s_hid = (String)session.getAttribute("s_hid");
+		String s_hid = request.getParameter("s_hid");
 		ArrayList<CampgroundDto> cgList = cDao.myCgList(s_hid, startRow, endRow);
 		request.setAttribute("cgList", cgList);
 		int totCnt = cDao.myCgTotCnt(s_hid);

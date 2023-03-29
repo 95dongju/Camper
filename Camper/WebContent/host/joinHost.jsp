@@ -7,17 +7,18 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Camper 회원가입</title>
+	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
-	<link href="${conPath }/css/joinAndModify.css" rel="stylesheet">
+	<link href="${conPath }/css/join.css" rel="stylesheet">
 
 	<script>
 		$(function(){
 			var patternMid = /^[A-za-z0-9]/g;
-			var mid = $('#mid').val();
-			if(mid != null){
-				if (!mid.match(patternMid)){
+			$('#mid').keyup(function(){
+				var mid = $(this).val();
+				if(!mid){
+					$('#midConfirmResult').html(' &nbsp; ');
+				}else if (!mid.match(patternMid)){
 					$('#midConfirmResult').html('<b>영문자 또는 숫자로 이루어진 아이디를 사용해 주세요</b>');
 				}else if (mid.length < 5){
 					$('#midConfirmResult').html('<b>5글자 이상의 아이디를 사용해 주세요</b>');
@@ -25,7 +26,7 @@
 					$('#midConfirmResult').html('<b>아이디가 너무 길어요</b>');
 				}else {
 					$.ajax({
-						url: '${conPath}/hidConfirm.do',
+						url: '${conPath}/gidConfirm.do',
 						type: 'post',
 						data: 'mid='+mid,
 						dataType: 'html',
@@ -33,7 +34,7 @@
 							$('#midConfirmResult').html(data);
 						},
 					});					
-				};
+				}
 			});
 			var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
 			$('#memail').keyup(function(){
@@ -138,31 +139,31 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"></jsp:include>
-	<div id="joinAndModify_table">
-		<form action="${conPath }/hostJoin.do" method="post" id="joinAndModify_form" enctype="multipart/form-data">
+	<div id="join_table">
+		<form action="${conPath }/hostJoin.do" method="post" id="join_form" enctype="multipart/form-data">
 			<table>
 				<caption>회원가입</caption>
 				<tr>
 					<td>
-						<input type="text" name="mname" id="mname" required="required" placeholder="이름 (실명)*" value="${s_hname }">
+						<input type="text" name="mname" id="mname" required="required" placeholder="이름 (실명)*">
 						<div id="mnameConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="mtel" id="mtel" required="required" placeholder="휴대폰번호 (- 포함하여 입력) *" value="${s_htel }">
+						<input type="text" name="mtel" id="mtel" required="required" placeholder="휴대폰번호 (- 포함하여 입력) *">
 						<div id="mtelConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="mid" id="mid" required="required" placeholder="아이디 *" value="${s_hid }">
+						<input type="text" name="mid" id="mid" required="required" placeholder="아이디 *">
 						<div id="midConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="memail" id="memail" required="required" placeholder="이메일 *" value="${s_hemail }">
+						<input type="text" name="memail" id="memail" required="required" placeholder="이메일 *">
 						<div id="memailConfirmResult"> &nbsp; </div>
 					</td>
 				</tr>
@@ -179,7 +180,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="bisname" id="bisname" required="required" placeholder="사업자명 *">
+						<input type="text" name="bisname" required="required" placeholder="사업자명 *">
 					</td>
 				</tr>
 				<tr>
@@ -197,12 +198,12 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="haddr" id="haddr" required="required" placeholder="사업장 주소 *">
+						<input type="text" name="haddr" required="required" placeholder="사업장 주소 *">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<select name="hacc_bankname" id="hacc_bankname" required="required">
+						<select name="hacc_bankname" required="required">
 							<option selected disabled>은행 선택 *</option>
 							<option>KEB하나은행</option>
 							<option>SC제일은행</option>
@@ -224,13 +225,13 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="haccount" id="haccount" required="required" placeholder="계좌번호 *">
+						<input type="text" name="haccount" required="required" placeholder="계좌번호 *">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div id="div_accpic"> 통장 사본 *</div>
-						<input type="file" name="accpic" id="accpic" required="required">
+						<input type="file" name="accpic" required="required">
 						<div id="div_accpic_desc"> ※ 5MB 이하의 파일만 첨부 가능합니다. </div>
 					</td>
 				</tr>
@@ -241,7 +242,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="button" class="btn" value="게스트로 회원가입" onclick="history.back()">
+						<input type="button" class="btn" value="게스트로 회원가입" onclick="location.href='${conPath}/guest/joinGuest.jsp'">
 					</td>
 				</tr>
 			</table>

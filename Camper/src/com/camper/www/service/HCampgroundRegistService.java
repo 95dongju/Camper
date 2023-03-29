@@ -10,7 +10,6 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.camper.www.dao.CampgroundDao;
 import com.camper.www.dto.CampgroundDto;
@@ -22,7 +21,6 @@ public class HCampgroundRegistService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		int result = 0;
-		int resultCs = 0;
 		String path = request.getRealPath("campgroundUpload");
 		int maxSize = 1024*1024*10;
 		String[] cgpics = new String[7];
@@ -65,11 +63,11 @@ public class HCampgroundRegistService implements Service {
 				}
 			}
 		}
-		HttpSession session = request.getSession();
 		String s_camp_name = mRequest.getParameter("cgname");
 		String s_camp_addr = mRequest.getParameter("cgaddr");
 		String s_camp_desc = mRequest.getParameter("cgdesc");
-		String s_hid = (String)session.getAttribute("s_hid");
+		String s_camp_tel = mRequest.getParameter("cgtel");
+		String s_hid = mRequest.getParameter("s_hid");
 		String s_camp_mainpic = cgpics[2]!=null ? cgpics[2]:"noimg.jpg";
 		String s_camp_mappic = cgpics[5]!=null ? cgpics[5]:"noimg.jpg";
 		String s_camp_pic1 = cgpics[6]!=null ? cgpics[6]:"noimg.jpg";
@@ -86,7 +84,7 @@ public class HCampgroundRegistService implements Service {
 		String s_with_pet = mRequest.getParameter("with_petChk")!=null ? "Y" : "N";
 		String s_swim_pool = mRequest.getParameter("swim_poolChk")!=null ? "Y" : "N";
 		CampgroundDao cDao = CampgroundDao.getInstance();
-		CampgroundDto cg = new CampgroundDto(null, s_camp_name, s_camp_desc, s_camp_addr, s_hid, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool, null, null);
+		CampgroundDto cg = new CampgroundDto(null, s_camp_name, s_camp_desc, s_camp_addr, s_camp_tel, s_hid, s_camp_mainpic, s_camp_mappic, s_camp_pic1, s_camp_pic2, s_camp_pic3, s_camp_pic4, s_camp_pic5, s_bathroom, s_showerbooth, s_store, s_sink, s_wifi, s_playground, s_with_pet, s_swim_pool, null, null);
 		result = cDao.registerCampground(cg);
 		if(result == CampgroundDao.SUCCESS) {
 			request.setAttribute("cg", cg);
