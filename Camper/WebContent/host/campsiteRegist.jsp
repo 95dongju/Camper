@@ -9,6 +9,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<link href="${conPath }/css/campgroundRegist.css" rel="stylesheet">
 	<script>
 		$(function(){
 			var i = 1;
@@ -19,73 +20,6 @@
 			});
 		});
 	</script>
-	<style>
-		#div_cg_rgst {
-			width: 1000px;
-			padding-top: 100px;
-			margin: 0 auto;
-		}
-		#div_cg_rgst form {
-			min-width: 1000px;
-			text-align: center;
-		}
-		#div_cg_rgst form fieldset {
-			width: 800px;
-			margin: 0 auto;
-			border: 1px solid gray;
-			background-color: #F0F5EF;
-			padding: 20px;
-			box-sizing: border-box;
-			border-raius: 10px 10px 10px 10px;
-		}
-		#div_cg_rgst form fieldset table {
-			margin: 0 auto;
-		}
-		#div_cg_rgst form fieldset table tr td {
-			padding: 5px;
-		}
-		#div_cg_rgst form fieldset table tr td input:not(.btn){
-			width: 300px;
-			height: 35px;
-			padding: 4px;
-			border: 1px solid gray;
-			box-sizing: border-box;
-		}
-		#div_cg_rgst form #div_btn .btn{
-			width: 300px;
-			margin: 10px;
-			height: 40px;
-			border: 1px solid #596E37;
-			background-color: #596E37;
-			color: white;
-			cursor: pointer;
-		}
-		#div_cg_rgst b {
-			color: red;
-			font-weight: normal;
-		}
-		#div_cg_rgst form #div_btn .btn:hover{
-			border: none;
-			background-color: #92B35E;
-		}
-		#div_cg_rgst form #div_btn .btn:active{
-			border: none;
-		}
-		#div_cg_rgst #cgsite_table input {
-			width: 150px;
-			height: 30px;
-			border: 1px solid gray;
-			box-sizing: border-box;
-		}
-		#div_cg_rgst .add_btn {
-			width: 80px;
-			height: 30px;
-			border: 1px solid #596E37;
-			background-color: #596E37;
-			color: white;
-			cursor: pointer;
-		}
-	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -107,7 +41,7 @@
 			<br>
 			<fieldset>
 				<input type="button" class="add_btn" value="사이트 추가">
-				<input type="text" name="siteCnt" class="siteCnt" value="1">
+				<input type="hidden" name="siteCnt" class="siteCnt" value="1">
 				<legend>캠핑 사이트 <b>*</b></legend>
 				<table id="cgsite_table">
 					<tr>

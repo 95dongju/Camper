@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.camper.www.service.GJoinService;
 import com.camper.www.service.GLoginService;
 import com.camper.www.service.GLogoutService;
+import com.camper.www.service.GReservationService;
 import com.camper.www.service.GemailConfirmService;
 import com.camper.www.service.GidConfirmService;
 import com.camper.www.service.HCampgroundListService;
-import com.camper.www.service.HGetCampgroundService;
 import com.camper.www.service.HCampgroundRegistService;
 import com.camper.www.service.HCampgroundViewService;
 import com.camper.www.service.HCampsiteRegistService;
@@ -54,6 +54,10 @@ public class Controller extends HttpServlet {
 			viewPage = "member/join.jsp";
 		}else if(command.equals("/loginView.do")) {
 			viewPage = "member/login.jsp";
+		}else if(command.equals("/campgroundView.do")) {
+			service = new HCampgroundViewService();
+			service.execute(request, response);
+			viewPage = "host/campgroundView.jsp";
 		// ***************** 게스트/호스트 로그인 *****************
 		}else if(command.equals("/gidConfirm.do")) {
 			service = new GidConfirmService();
@@ -115,7 +119,7 @@ public class Controller extends HttpServlet {
 			viewPage = "guest/modifyGuest.jsp";	
 		}else if(command.equals("/modifyHost.do")) {
 			viewPage = "host/modifyHost.jsp";	
-			// ***************** 호스트 페이지 ********************
+			// ************ 호스트 캠핑장 등록 ***************
 		}else if(command.equals("/campgroundListView.do")) {
 			service = new HCampgroundListService();
 			service.execute(request, response);
@@ -130,11 +134,13 @@ public class Controller extends HttpServlet {
 			service = new HCampsiteRegistService();
 			service.execute(request, response);
 			viewPage = "/campgroundListView.do";
-		}else if(command.equals("/campgroundView.do")) {
-			service = new HCampgroundViewService();
+		// *************** 게스트 예약 페이지 ***************
+		}else if(command.equals("/reservation.do")) {
+			service = new GReservationService();
 			service.execute(request, response);
-			viewPage = "host/campgroundView.jsp";
+			viewPage = "";
 		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

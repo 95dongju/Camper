@@ -33,7 +33,7 @@
 				<ul>
 					<li><a href=""><img src="${conPath }/img/camper_booking_icon.png"><br>예약 현황</a></li>
 					<li><a href=""><img src="${conPath }/img/camper_review_icon.png"><br>내 캠핑장 후기</a></li>
-					<li><a href=""><img src="${conPath }/img/camper_campground_icon.png"><br>캠핑장 관리</a></li>
+					<li><a href="${conPath }/campgroundListView.do"><img src="${conPath }/img/camper_campground_icon.png"><br>캠핑장 관리</a></li>
 				</ul>
 			</div>
 		</div>
