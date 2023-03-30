@@ -31,14 +31,15 @@
 			width: 200px;
 			height: 25px;
 			padding: 4px;
-			border: 1px solid gray;
+			border: 1px solid #BBBBBB;
 			box-sizing: border-box;
 		}
 		#wrap #booking_frm #calendar {
 			margin: 10px auto;
 			text-align: center;
-			border: 1px solid gray;
+			border: 1px solid #BBBBBB;
 			padding: 5px;
+			border-radius: 20px;
 		}
 		#wrap #booking_frm #calendar tr td {
 			padding: 5px;
@@ -68,8 +69,7 @@
 					<script type="text/javascript">buildCalendar();</script>
 				</table>
 				<div id="booking_data">
-				<p> 예약일 <input id="selectedDate" name="selectedDate" value="" readonly="readonly"></p>
-				<p> 금액 <input id="totalPrice" name="totalPrice" value="" readonly="readonly"> 원 </p>
+				예약일  <input id="selectedDate" name="selectedDate" value="" readonly="readonly"> 금액 <input id="totalPrice" name="totalPrice" value="" readonly="readonly"> 원
 				</div>
 			</form>
 		</div>

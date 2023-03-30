@@ -86,7 +86,7 @@
 										${csList.s_sitename }
 										<br>
 										<h5>${csList.s_siteprice }원</h5>
-										<button class="btn" onclick="location.href='${conPath}/reservationList.do?s_site_no=${csList.s_site_no}'">예약하기</button>
+										<button class="btn" onclick="location.href='${conPath}/reservationView.do?s_site_no=${csList.s_site_no}'">예약하기</button>
 									</div>
 								</td>
 						</c:forEach>
