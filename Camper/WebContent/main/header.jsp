@@ -97,7 +97,7 @@
 				<a href="${conPath }/main.do" class="logo">
 					<img src="${conPath }/img/camperLogo.png"/>
 				</a>
-				<form action="${conPath}/searchCamp.do?" method="get">
+				<form action="${conPath}/searchCamp.do" method="get">
 					<div class="searchbox">
 						<input type="text" id="searchtxt" placeholder="캠핑장 명을 검색하세요" value="${cgName }"><img src="${conPath }/img/free-icon-magnifying-glass-49116.png" id="searchBtn">
 					</div>

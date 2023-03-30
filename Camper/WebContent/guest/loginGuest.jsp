@@ -25,7 +25,7 @@
 	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 		<div id="div_login">
-			<form action="${conPath }/loginGuest.do" method="post" id="login_form">
+			<form action="${conPath }/guestLogin.do" method="post" id="login_form">
 				<table>
 					<caption>게스트 로그인</caption>
 					<tr>

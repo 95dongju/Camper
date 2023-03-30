@@ -21,19 +21,23 @@
 	  				$('#mpwChkResult').html('<b>비밀번호를 확인해 주세요</b>');
 	  			}
 	  		});
-  		$('form').submit(function(){
-  			var oldPw = $('#mpw').val();
-  			var mpwNew = $('#mpwNew').val();
-  			var mpwChkResult = $('#mpwChkResult').text().trim();
-  			if(oldPw != '${host.s_hpw}'){
-  				alert('비밀번호를 확인하세요');
-  				$('#mpw').focus();
-  				return false;
-  			}else if(mpwNew != '' && mpwChkResult != '비밀번호가 확인되었습니다'){
-  				alert('비밀번호를 확인하세요');
-  				$('#mpwNew').focus();
-  				return false;
-  			}
+			$('form').submit(function(){
+	  			var oldPw = $('#mpw').val();
+	  			var mpwNew = $('#mpwNew').val();
+	  			var mpwChkResult = $('#mpwChkResult').text().trim();
+	  			if(oldPw != '${host.s_hpw}'){
+	  				alert('비밀번호를 확인하세요');
+	  				$('#mpw').focus();
+	  				return false;
+	  			}else if(mpwChkResult != '비밀번호가 확인되었습니다'){
+	  				alert('비밀번호를 확인하세요');
+	  				$('#mpwNew').focus();
+	  				return false;
+	  			}else if (oldPw == '${host.s_hpw}' && mpwNew == ''){
+	  				return true;
+	  			}else if (oldPw == '${host.s_hpw}' && mpwChkResult == '비밀번호가 확인되었습니다'){
+	  				return true;
+	  			}
   	  	});
 	});
 	</script>
@@ -53,7 +57,7 @@
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="wrap">
 		<div id="div_modify_frm">
-			<form action="${conPath }/modifyhost.do" method="post" id="modify_form">
+			<form action="${conPath }/modifyhost.do" method="post" id="modify_form" enctype="multipart/form-data">
 				<input type="hidden" name="dbPw" value="${host.s_hpw }">
 				<input type="hidden" name="dbPic" value="${host.s_hpic }">
 				<table>
@@ -116,7 +120,7 @@
 							변경할 비밀번호
 						</td>
 						<td>
-							<input type="password" name="mpwNew" placeholder="변경할 비밀번호">
+							<input type="password" name="mpwNew" id="mpwNew" placeholder="변경할 비밀번호">
 						</td>
 					</tr>
 					<tr>
@@ -148,9 +152,10 @@
 					<tr>
 						<td>
 							사업자등록증
+							<div> &nbsp; </div>
 						</td>
 						<td>
-							<input type="file" name="bispic" required="required" readonly="readonly">
+							<input type="file" name="bispic" readonly="readonly">
 							<br><span>등록한 파일명: ${host.s_hbis_pic }</span>
 						</td>
 					</tr>
@@ -165,9 +170,27 @@
 					<tr>
 						<td>
 							은행명
+							<input type="hidden" name="bankname" value="${host.s_hacc_bankname }">
 						</td>
 						<td>
-							<input type="text" name="bankname" required="required" readonly="readonly" value="${host.s_hacc_bankname }">
+							<select name="hacc_bankname">
+								<option selected disabled>은행 선택 *</option>
+								<option>KEB하나은행</option>
+								<option>SC제일은행</option>
+								<option>국민은행</option>
+								<option>기업은행</option>
+								<option>신한은행</option>
+								<option>외환은행</option>
+								<option>우리은행</option>
+								<option>시티뱅크</option>
+								<option>경남은행</option>
+								<option>광주은행</option>
+								<option>카카오뱅크</option>
+								<option>부산은행</option>
+								<option>수협</option>
+								<option>대구은행</option>
+								<option>토스뱅크</option>
+							</select>
 						</td>
 					</tr>
 					<tr>
@@ -175,15 +198,16 @@
 							계좌번호
 						</td>
 						<td>
-							<input type="text" name="haccount"required="required" value="${host.s_haccount}">
+							<input type="text" name="haccount" value="${host.s_haccount}">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							통장 사본
+							<div> &nbsp; </div>
 						</td>
 						<td>
-							<input type="file" name="haccpic" required="required">
+							<input type="file" name="haccpic">
 							<br><span> 등록한 파일명: ${host.s_hacc_pic}</span>
 						</td>
 					</tr>
