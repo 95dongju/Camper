@@ -95,7 +95,7 @@
 							</select> 년
 							<select name="month">
 								<c:forEach var="i" begin="1" end="12">
-									<c:if test="${i eq month+1 }">
+									<c:if test="${i eq month }">
 										<option selected="selected">${i }</option>
 									</c:if>
 									<c:if test="${i != month }">
