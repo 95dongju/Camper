@@ -13,6 +13,7 @@ import com.camper.www.service.GJoinService;
 import com.camper.www.service.GLoginService;
 import com.camper.www.service.GLogoutService;
 import com.camper.www.service.GModifyService;
+import com.camper.www.service.GModifyViewService;
 import com.camper.www.service.GReservationListService;
 import com.camper.www.service.GReservationService;
 import com.camper.www.service.GReservationViewService;
@@ -28,6 +29,7 @@ import com.camper.www.service.HJoinService;
 import com.camper.www.service.HLoginService;
 import com.camper.www.service.HLogoutService;
 import com.camper.www.service.HModifyService;
+import com.camper.www.service.HModifyViewService;
 import com.camper.www.service.HWithdrawService;
 import com.camper.www.service.HbisnumConfirmService;
 import com.camper.www.service.HemailConfirmService;
@@ -126,14 +128,19 @@ public class Controller extends HttpServlet {
 		}else if(command.equals("/mypageHost.do")) {
 			viewPage = "host/mypageHost.jsp";
 		}else if(command.equals("/modifyGuestView.do")) {
+			service = new GModifyViewService();
+			service.execute(request, response);
 			viewPage = "guest/modifyGuest.jsp";	
 		}else if(command.equals("/modifyHostView.do")) {
+			service = new HModifyViewService();
+			service.execute(request, response);
 			viewPage = "host/modifyHost.jsp";	
 		}else if(command.equals("/modifyGuest.do")) {
 			service = new GModifyService();
 			service.execute(request, response);
 			viewPage = "guest/mypageGuest.jsp";	
 		}else if(command.equals("/modifyHost.do")) {
+			System.out.println("잘");
 			service = new HModifyService();
 			service.execute(request, response);
 			viewPage = "host/mypageHost.jsp";	
@@ -176,7 +183,7 @@ public class Controller extends HttpServlet {
 		}else if(command.equals("/reservation.do")) {
 			service = new GReservationService();
 			service.execute(request, response);
-			viewPage = "guest/reservationList.jsp";
+			viewPage = "reservationView.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

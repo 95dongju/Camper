@@ -31,9 +31,11 @@ public class HModifyService implements Service {
 			String param = params.nextElement();
 			s_hpic = mRequest.getFilesystemName(param);
 			String dbPw = mRequest.getParameter("dbPw");
+			System.out.println(dbPw);
 			String dbPhoto = mRequest.getParameter("dbPic");
 			String s_hid = mRequest.getParameter("mid");
 			String s_hpw = mRequest.getParameter("mpwNew");
+			System.out.println(s_hpw);
 			String s_hbis_name = mRequest.getParameter("bisname");
 			String s_hbis_num = mRequest.getParameter("bisnum");
 			String s_hbis_pic = mRequest.getParameter("bispic");
@@ -41,8 +43,12 @@ public class HModifyService implements Service {
 			String s_hacc_bankname = mRequest.getParameter("bankname");
 			String s_haccount = mRequest.getParameter("haccount");
 			String s_hacc_pic = mRequest.getParameter("haccpic");
-			if(s_hpw.equals("")) s_hpw = dbPw;
-			if(s_hpic == null) s_hpic = dbPhoto;
+			if(s_hpw.equals("")) {
+				s_hpw = dbPw;
+			}
+			if(s_hpic == null) {
+				s_hpic = dbPhoto;
+			}
 			HostDao hDao = HostDao.getInstance();
 			HostDto host = new HostDto(s_hid, s_hpw, s_hbis_name, s_hbis_num, s_hbis_pic, s_haddr, s_hacc_bankname, s_haccount, s_hacc_pic, s_hpic);
 			result = hDao.modifyHost(host);

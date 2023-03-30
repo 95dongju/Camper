@@ -28,17 +28,27 @@ public class GModifyService implements Service {
 		try {
 			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			Enumeration<String> params = mRequest.getFileNames();
-			String param = params.nextElement();
-			s_gphoto = mRequest.getFilesystemName(param);
+			while(params.hasMoreElements()) {
+				String param = params.nextElement();
+				s_gphoto = mRequest.getFilesystemName(param);
+			}
 			String dbPw = mRequest.getParameter("dbPw");
 			String dbPhoto = mRequest.getParameter("dbPic");
-			if(s_gphoto == null) s_gphoto = dbPhoto;
+			if(s_gphoto == null) {
+				s_gphoto = dbPhoto;
+			}
+			System.out.println(dbPhoto);
 			String s_gid = mRequest.getParameter("mid");
 			String s_gpw = mRequest.getParameter("mpwNew");
-			if(s_gpw.equals("")) s_gpw = dbPw;
+			if(s_gpw.equals("")) {
+				s_gpw = dbPw;
+			}
+			String s_gname = mRequest.getParameter("mname");
 			String s_gnick = mRequest.getParameter("mnick");
+			String s_gtel = mRequest.getParameter("mtel");
+			String s_gemail = mRequest.getParameter("memail");
 			GuestDao gDao = GuestDao.getInstance();
-			GuestDto guest = new GuestDto(s_gid, s_gpw, s_gnick, s_gphoto);
+			GuestDto guest = new GuestDto(s_gid, s_gpw,s_gemail, s_gname, s_gnick, s_gtel, s_gphoto);
 			result = gDao.modifyGuest(guest);
 			if(result == GuestDao.SUCCESS) {
 				HttpSession session = request.getSession();

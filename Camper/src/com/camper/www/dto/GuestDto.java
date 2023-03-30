@@ -27,10 +27,14 @@ public class GuestDto {
 		this.g_del_yn = g_del_yn;
 		this.g_rdate = g_rdate;
 	}
-	public GuestDto(String s_gid, String s_gpw, String s_gnick, String s_gphoto) {
+	public GuestDto(String s_gid, String s_gpw, String s_gemail, String s_gname, String s_gnick, String s_gtel,
+			String s_gphoto) {
 		this.s_gid = s_gid;
 		this.s_gpw = s_gpw;
+		this.s_gemail = s_gemail;
+		this.s_gname = s_gname;
 		this.s_gnick = s_gnick;
+		this.s_gtel = s_gtel;
 		this.s_gphoto = s_gphoto;
 	}
 	public String getS_gid() {

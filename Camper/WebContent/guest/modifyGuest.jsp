@@ -25,18 +25,12 @@
   			var oldPw = $('#mpw').val();
   			var mpwNew = $('#mpwNew').val();
   			var mpwChkResult = $('#mpwChkResult').text().trim();
-  			if(oldPw != '${guest.s_gpw}'){
+  			if (oldPw != '${guest.s_gpw}' && mpwNew != ''){
   				alert('비밀번호를 확인하세요');
-  				$('#mpw').focus();
   				return false;
-  			}else if(mpwChkResult != '비밀번호가 확인되었습니다'){
-  				alert('비밀번호를 확인하세요');
-  				$('#mpwNew').focus();
+  			}else if (oldPw != '${guest.s_gpw}' && mpwChkResult != '비밀번호가 확인되었습니다'){
+  				alert('변경할 비밀번호를 확인하세요');
   				return false;
-  			}else if (oldPw == '${guest.s_gpw}' && mpwNew == ''){
-  				return true;
-  			}else if (oldPw == '${guest.s_gpw}' && mpwChkResult == '비밀번호가 확인되었습니다'){
-  				return true;
   			}
   	  	});
 	});
@@ -46,26 +40,36 @@
  	<c:if test="${empty guest}">
 		<script>
 			alert('로그인 후 이용 가능합니다.');
-			location.href='${conPath}/member/login.jsp';
+			location.href='${conPath}/guest/loginGuest.jsp';
+		</script>
+	</c:if>
+	<c:if test="${not empty modifyResult }">
+		<script>
+			alert('${modifyResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty modifyErrorMsg }">
+		<script>
+			alert('${modifyErrorMsg}');
 		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="wrap">
 		<div id="div_modify_frm">
 			<form action="${conPath }/modifyGuest.do" method="post" id="modify_form" enctype="multipart/form-data">
-				<input type="hidden" name="dbPw" value="${host.s_gpw }">
-				<input type="hidden" name="dbPic" value="${host.s_gphoto }">
+				<input type="hidden" name="dbPw" value="${guest.s_gpw }">
+				<input type="text" name="dbPic" value="${guest.s_gphoto }">
 				<table>
 					<caption>정보 수정</caption>
 					<tr>
 						<td colspan="2">
 							<div class="photo">
-								<img src="${conPath }/img/${guest.s_gphoto}">
+								<img src="${conPath }/mPicUpload/${guest.s_gphoto}">
 								<div class="modify_pic">
 									<label for="file-input">
 										<img src="${conPath }/img/camper_camera_icon.png">
 									</label>
-									<input type="file" id="file-input" style="display:none;">
+									<input type="file" name="s_gphoto" id="file-input" style="display:none;">
 								</div>							
 							</div>
 						</td>

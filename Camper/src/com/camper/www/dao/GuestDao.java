@@ -193,6 +193,7 @@ public class GuestDao {
 	}
 	// 6. 게스트 정보 수정
 	public int modifyGuest(GuestDto guest) {
+		System.out.println("수정할 내용 : "+guest);
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;

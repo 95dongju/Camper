@@ -238,7 +238,7 @@ public class HostDao {
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE MEMBER_HOST S_HPW = ?, " + 
+		String sql = "UPDATE MEMBER_HOST SET S_HPW = ?, " + 
 				"                        S_HBIS_NAME = ?, " + 
 				"                        S_HBIS_NUM = ?, " + 
 				"                        S_HBIS_PIC = ?, " + 

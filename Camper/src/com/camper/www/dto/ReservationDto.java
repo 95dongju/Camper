@@ -6,13 +6,13 @@ import java.sql.Timestamp;
 public class ReservationDto {
 	private String s_rez_no;
 	private String s_site_no;
-	private Date d_select;
+	private String d_select;
 	private String s_gid;
 	private Timestamp d_rez_date;
 	private String gr_status;
 	private String s_gtel;
 	public ReservationDto() {}
-	public ReservationDto(String s_rez_no, String s_site_no, Date d_select, String s_gid,
+	public ReservationDto(String s_rez_no, String s_site_no, String d_select, String s_gid,
 			Timestamp d_rez_date, String gr_status) {
 		this.s_rez_no = s_rez_no;
 		this.s_site_no = s_site_no;
@@ -21,7 +21,7 @@ public class ReservationDto {
 		this.d_rez_date = d_rez_date;
 		this.gr_status = gr_status;
 	}
-	public ReservationDto(String s_rez_no, Date d_select, String s_gid,
+	public ReservationDto(String s_rez_no, String d_select, String s_gid,
 			Timestamp d_rez_date, String gr_status, String s_gtel) {
 		super();
 		this.s_rez_no = s_rez_no;
@@ -43,10 +43,10 @@ public class ReservationDto {
 	public void setS_site_no(String s_site_no) {
 		this.s_site_no = s_site_no;
 	}
-	public Date getD_select() {
+	public String getD_select() {
 		return d_select;
 	}
-	public void setD_select(Date d_select) {
+	public void setD_select(String d_select) {
 		this.d_select = d_select;
 	}
 	public String getS_gid() {

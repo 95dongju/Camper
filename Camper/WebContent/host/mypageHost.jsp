@@ -16,7 +16,7 @@
 	<c:if test="${empty host}">
 		<script>
 			alert('로그인 후 이용 가능합니다.');
-			location.href='${conPath}/member/login.jsp';
+			location.href='${conPath}/host/loginHost.jsp';
 		</script>
 	</c:if>
 	<div id="div_mypage">

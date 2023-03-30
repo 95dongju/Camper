@@ -16,14 +16,14 @@
 	<c:if test="${empty guest}">
 		<script>
 			alert('로그인 후 이용 가능합니다.');
-			location.href='${conPath}/member/login.jsp';
+			location.href='${conPath}/guest/loginGuest.jsp';
 		</script>
 	</c:if>
 	<div id="div_mypage">
 		<h2>마이페이지</h2>
 		<div id="div_myinfo">
 			<div class="member_info">
-				<p id="member_photo"><img src="${conPath }/img/${guest.s_gphoto}"></p>
+				<p id="member_photo"><img src="${conPath }/mPicUpload/${guest.s_gphoto}"></p>
 				<br>
 				<p><b>${guest.s_gnick }</b> 님, 안녕하세요!</p>
 				<br>
