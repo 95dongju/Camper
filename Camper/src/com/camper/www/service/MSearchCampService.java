@@ -34,5 +34,4 @@ public class MSearchCampService implements Service {
 		request.setAttribute("searchNameList", searchNameList);
 		request.setAttribute("cgName", cgName);
 	}
-
 }

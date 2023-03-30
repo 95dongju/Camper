@@ -286,7 +286,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
+		String sql = "SELECT S_CAMP_NO, S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
 				"FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH " + 
 				"WHERE A.S_HID = MH.S_HID  AND S_CAMP_ADDR LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
 		try {
@@ -297,10 +297,11 @@ public class CampgroundDao {
 			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				String s_camp_no = rs.getString("s_camp_no");
 				String s_camp_name = rs.getString("s_camp_name");
 				String s_camp_addr = rs.getString("s_camp_addr");
 				String s_camp_mainpic =  rs.getString("s_camp_mainpic");
-				cgList.add(new CampgroundDto(s_camp_name, s_camp_addr, s_camp_mainpic));
+				cgList.add(new CampgroundDto(s_camp_no, s_camp_name, s_camp_addr, s_camp_mainpic));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -321,7 +322,7 @@ public class CampgroundDao {
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
+		String sql = "SELECT S_CAMP_NO, S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
 				"FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH " + 
 				"WHERE A.S_HID = MH.S_HID AND S_CAMP_NAME LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
 		try {
@@ -332,10 +333,11 @@ public class CampgroundDao {
 			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
+				String s_camp_no = rs.getString("s_camp_no");
 				String s_camp_name = rs.getString("s_camp_name");
 				String s_camp_addr = rs.getString("s_camp_addr");
 				String s_camp_mainpic =  rs.getString("s_camp_mainpic");
-				cgList.add(new CampgroundDto(s_camp_name, s_camp_addr, s_camp_mainpic));
+				cgList.add(new CampgroundDto(s_camp_no, s_camp_name, s_camp_addr, s_camp_mainpic));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

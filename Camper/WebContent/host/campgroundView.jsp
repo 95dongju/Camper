@@ -12,13 +12,13 @@
 	<link href="${conPath }/css/campgroundView.css" rel="stylesheet">
 </head>
 <style>
-	#wrap_btn p {
+	#div_cg_content .host_delete {
 		color: gray;
 		font-size: 0.9em;
 		cursor: pointer;
 		text-align: center;
 	}
-	#wrap_btn p:hover {
+	#div_cg_content .host_delete:hover {
 		color: black;
 	}
 </style>
@@ -26,7 +26,7 @@
 	<c:if test="${empty s_camp_no }">
 		<script>
 			alert('잘못된 접근입니다');
-			/* location.href='${conPath}/main/main.jsp'; */
+			location.href='${conPath}/main/main.jsp';
 		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp"/>
@@ -69,7 +69,7 @@
 				</div>
 				<p>설명: ${cgView.s_camp_desc }</p>
 					<c:if test="${not empty host }">
-						<p>캠핑장 삭제하기</p>
+						<p class="host_delete">캠핑장 삭제하기</p>
 					</c:if>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 										${csList.s_sitename }
 										<br>
 										<h5>${csList.s_siteprice }원</h5>
-										<button class="btn" onclick="${conPath}/reservation.do?s_site_no=${csList.s_site_no}">예약하기</button>
+										<button class="btn" onclick="location.href='${conPath}/reservationList.do?s_site_no=${csList.s_site_no}'">예약하기</button>
 									</div>
 								</td>
 						</c:forEach>

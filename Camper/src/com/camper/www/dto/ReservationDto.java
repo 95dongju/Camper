@@ -6,30 +6,26 @@ import java.sql.Timestamp;
 public class ReservationDto {
 	private String s_rez_no;
 	private String s_site_no;
-	private Date d_rez_from;
-	private Date d_rez_to;
+	private Date d_select;
 	private String s_gid;
 	private Timestamp d_rez_date;
 	private String gr_status;
 	private String s_gtel;
 	public ReservationDto() {}
-	public ReservationDto(String s_rez_no, String s_site_no, Date d_rez_from, Date d_rez_to, String s_gid,
+	public ReservationDto(String s_rez_no, String s_site_no, Date d_select, String s_gid,
 			Timestamp d_rez_date, String gr_status) {
 		this.s_rez_no = s_rez_no;
 		this.s_site_no = s_site_no;
-		this.d_rez_from = d_rez_from;
-		this.d_rez_to = d_rez_to;
+		this.d_select = d_select;
 		this.s_gid = s_gid;
 		this.d_rez_date = d_rez_date;
 		this.gr_status = gr_status;
 	}
-	public ReservationDto(String s_rez_no, String s_site_no, Date d_rez_from, Date d_rez_to, String s_gid,
+	public ReservationDto(String s_rez_no, Date d_select, String s_gid,
 			Timestamp d_rez_date, String gr_status, String s_gtel) {
 		super();
 		this.s_rez_no = s_rez_no;
-		this.s_site_no = s_site_no;
-		this.d_rez_from = d_rez_from;
-		this.d_rez_to = d_rez_to;
+		this.d_select = d_select;
 		this.s_gid = s_gid;
 		this.d_rez_date = d_rez_date;
 		this.gr_status = gr_status;
@@ -47,17 +43,11 @@ public class ReservationDto {
 	public void setS_site_no(String s_site_no) {
 		this.s_site_no = s_site_no;
 	}
-	public Date getD_rez_from() {
-		return d_rez_from;
+	public Date getD_select() {
+		return d_select;
 	}
-	public void setD_rez_from(Date d_rez_from) {
-		this.d_rez_from = d_rez_from;
-	}
-	public Date getD_rez_to() {
-		return d_rez_to;
-	}
-	public void setD_rez_to(Date d_rez_to) {
-		this.d_rez_to = d_rez_to;
+	public void setD_select(Date d_select) {
+		this.d_select = d_select;
 	}
 	public String getS_gid() {
 		return s_gid;
@@ -86,8 +76,8 @@ public class ReservationDto {
 	}
 	@Override
 	public String toString() {
-		return "ReservationDto [s_rez_no=" + s_rez_no + ", s_site_no=" + s_site_no + ", d_rez_from=" + d_rez_from
-				+ ", d_rez_to=" + d_rez_to + ", s_gid=" + s_gid + ", d_rez_date=" + d_rez_date + ", gr_status="
+		return "ReservationDto [s_rez_no=" + s_rez_no + ", s_site_no=" + s_site_no + ", d_select=" + d_select
+				+ ", s_gid=" + s_gid + ", d_rez_date=" + d_rez_date + ", gr_status="
 				+ gr_status + "]";
 	}
 }

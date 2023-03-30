@@ -26,7 +26,7 @@
 					$('#midConfirmResult').html('<b>아이디가 너무 길어요</b>');
 				}else {
 					$.ajax({
-						url: '${conPath}/gidConfirm.do',
+						url: '${conPath}/hidConfirm.do',
 						type: 'post',
 						data: 'mid='+mid,
 						dataType: 'html',

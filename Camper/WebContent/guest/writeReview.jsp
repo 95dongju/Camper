@@ -18,7 +18,6 @@
 		#wrap #review_frm table {
 			width: 1000px;
 			margin: 0 auto;
-			border: 1px solid gray;
 		}
 		#wrap #review_frm table caption {
 			font-size: 2em;
@@ -30,6 +29,7 @@
 		}
 		#wrap #review_frm table input:not(.btn, .pic) {
 			width: 800px;
+			margin: 5px;
 			height: 35px;
 			padding: 5px;
 			border: 1px solid gray;
@@ -38,6 +38,7 @@
 		}
 		#wrap #review_frm table textarea{
 			font-size: 1.1em;
+			margin: 5px;
 			width: 800px;
 			height: 400px;
 			padding: 5px;
@@ -82,26 +83,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label for="pic1">
-						<div id="1" style="width: 100px; height: 100px; background-color: red; float:left; position: relative;"></div>
-							<input type="file" class="pic" id="pic1" name="review_pic1">
-						</label>
-						<label for="pic2">
-						<div id="2" style="width: 100px; height: 100px; background-color: blue; float:left; position: relative;"></div>
-							<input type="file" class="pic" id="pic2" name="review_pic2">
-						</label>
-						<label for="pic3">
-						<div id="3" style="width: 100px; height: 100px; background-color: green; float:left; position: relative;"></div>
-							<input type="file" class="pic" id="pic3" name="review_pic3">
-						</label>
-						<label for="pic4">
-						<div id="4" style="width: 100px; height: 100px; background-color: purple; float:left; position: relative;"></div>
-							<input type="file" class="pic" id="pic4" name="review_pic4">
-						</label>
-						<label for="pic5">
-						<div id="5" style="width: 100px; height: 100px; background-color: black; float:left; position: relative;"></div>
-							<input type="file" class="pic" id="pic5" name="review_pic5">
-						</label>
+						
 					</td>
 				</tr>
 				<tr>

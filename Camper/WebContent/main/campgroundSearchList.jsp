@@ -47,9 +47,7 @@
 			float: left;
 			margin: 13px;
 		}
-		#wrap #div_cgList .each_campground .btn {
-			width: 100px;
-		}
+
 	</style>
 	<script>
 		$(document).ready(function(){
@@ -88,15 +86,12 @@
 				<p>해당 명의 캠핑장이 없습니다</p>
 			</c:if>
 			<c:if test="${totCnt != 0 }">
-				<c:forEach items="${searchNameList }" var="list">
+				<c:forEach items="${searchNameList }" var="cgView">
 					<div class="each_campground">
-						<div class="cg_mainpic"><img src="${conPath }/campgroundUpload/${list.s_camp_mainpic}"></div>
-						<div class="cg_info">
-							<h2>${list.s_camp_name}</h2>
-							<p>${list.s_camp_addr }</p>
-						</div>
-						<div class="btn">
-							<button>예약하기</button>
+						<div class="cg_mainpic"><img src="${conPath }/campgroundUpload/${cgView.s_camp_mainpic}"></div>
+						<div class="cg_info" onclick="location.href='${conPath}/campgroundView.do?s_camp_no=${cgView.s_camp_no }&pageNum=${pageNum }'">
+							<h2>${cgView.s_camp_name}</h2>
+							<p>${cgView.s_camp_addr }</p>
 						</div>
 					</div>
 				</c:forEach>

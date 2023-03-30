@@ -13,10 +13,12 @@ import com.camper.www.service.GJoinService;
 import com.camper.www.service.GLoginService;
 import com.camper.www.service.GLogoutService;
 import com.camper.www.service.GModifyService;
+import com.camper.www.service.GReservationListService;
 import com.camper.www.service.GReservationService;
 import com.camper.www.service.GWithdrawService;
 import com.camper.www.service.GemailConfirmService;
 import com.camper.www.service.GidConfirmService;
+import com.camper.www.service.HCampgroundDelService;
 import com.camper.www.service.HCampgroundListService;
 import com.camper.www.service.HCampgroundRegistService;
 import com.camper.www.service.HCampgroundViewService;
@@ -161,12 +163,19 @@ public class Controller extends HttpServlet {
 			service = new HCampsiteRegistService();
 			service.execute(request, response);
 			viewPage = "/campgroundListView.do";
+		}else if(command.equals("/campgroundDelete.do")) {
+			service = new HCampgroundDelService();
+			service.execute(request, response);
+			viewPage = "/campgroundListView.do";
 		// *************** 게스트 예약 페이지 ***************
+		}else if(command.equals("/reservationList.do")) {
+			service = new GReservationListService();
+			service.execute(request, response);
+			viewPage = "guest/reservationList.jsp";
 		}else if(command.equals("/reservation.do")) {
 			service = new GReservationService();
 			service.execute(request, response);
 			viewPage = "guest/reservationList.jsp";
-
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

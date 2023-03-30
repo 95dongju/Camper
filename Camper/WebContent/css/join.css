@@ -16,7 +16,7 @@
 		#join_table #join_form table tr td {
 			padding: 5px;
 		}
-		#join_table #join_form table tr td input:not(.btn) {
+		#join_table #join_form table tr td input:not(.btn), select {
 			width: 300px;
 			height: 35px;
 			padding: 4px;

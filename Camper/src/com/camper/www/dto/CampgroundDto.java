@@ -86,8 +86,8 @@ public class CampgroundDto {
 		this.s_camp_name = s_camp_name;
 	}
 	
-	public CampgroundDto(String s_camp_name, String s_camp_addr, String s_camp_mainpic) {
-		super();
+	public CampgroundDto(String s_camp_no, String s_camp_name, String s_camp_addr, String s_camp_mainpic) {
+		this.s_camp_no = s_camp_no;
 		this.s_camp_name = s_camp_name;
 		this.s_camp_addr = s_camp_addr;
 		this.s_camp_mainpic = s_camp_mainpic;
