@@ -1,0 +1,38 @@
+1. ppt 완성 후 모든 슬라이드 jpeg 파일로 저장
+2. 페이지 셀렉트 (올리지 않을 것 지우고 파일명 정리)
+3. 이미지 잘라내기 (제목이나 쓸데없는 것 삭제)
+
+
+
+README.md
+
+##CAMPER
+==============
+> 개별 프로젝트
+
+- 프로젝트명: CAMPER (캠핑 예약 관리 시스템)
+- 인원: 1명
+- 기간: 2023.03.20 ~ 2023.03.31
+- DBMS: Oracle 11g Express Edition
+- 언어: JAVA SE 8 Platform, HTML5, CSS, JavaScript
+- 디자인 패턴: MVC (Model 2)
+- 오픈 Library: jQuery v3.4.1, jQueryUI, randomNickUI,
+- 프로젝트 소개: 캠핑장 예약 페이지와 관리 시스템을 통합하여 하나의 프로그램으로 이용 및 관리할 수 있는 통합형 캠핑장 예약 관리 시스템이다
+
+메인페이지 img
+
+##목차
+===============
+[1. 작업분할 구조도]
+[2. Gantt Chard]
+[3. 이용자 권한]
+[4. Usecase Diagram]
+[5. Sequence Diagram]
+[6. 기능정의서]
+[7. E-R Diagram]
+[8. Project Source Explorer]
+[9. 실행화면 설명]
+
+
+
+- 
