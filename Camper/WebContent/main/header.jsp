@@ -99,7 +99,7 @@
 				</a>
 				<form action="${conPath}/searchCamp.do" method="get">
 					<div class="searchbox">
-						<input type="text" id="searchtxt" placeholder="캠핑장 명을 검색하세요" value="${cgName }"><img src="${conPath }/img/free-icon-magnifying-glass-49116.png" id="searchBtn">
+						<input type="text" name="searchtxt" id="searchtxt" placeholder="캠핑장 명을 검색하세요" value="${cgName }"><img src="${conPath }/img/free-icon-magnifying-glass-49116.png" id="searchBtn">
 					</div>
 				</form>
 				<c:if test="${empty guest and empty host and empty admin}">
