@@ -39,6 +39,13 @@
 		#wrap #div_modify_frm #modify_form table tr td span {
 			font-size: 0.8em;
 		}
+		#wrap #div_modify_frm #modify_form table tr td select {
+			width: 300px;
+			height: 35px;
+			padding: 4px;
+			border: 1px solid gray;
+			box-sizing: border-box;
+		}
 	</style>
 </head>
 <body>
@@ -52,19 +59,21 @@
 	<div id="wrap">
 		<div id="div_modify_frm">
 			<form action="${conPath }/modifyHost.do" method="post" id="modify_form" enctype="multipart/form-data">
-				<input type="text" name="dbPw" value="${host.s_hpw }">
-				<input type="text" name="dbPic" value="${host.s_hpic }">
+				<input type="hidden" name="dbPw" value="${host.s_hpw }">
+				<input type="hidden" name="dbPic" value="${host.s_hpic }">
+				<input type="hidden" name="dbBisPic" value="${host.s_hbis_pic }">
+				<input type="hidden" name="dbAccPic" value="${host.s_hacc_pic }">
 				<table>
 					<caption>정보 수정</caption>
 					<tr>
 						<td colspan="2">
 							<div class="photo">
-								<img src="${conPath }/img/${host.s_hpic}">
+								<img src="${conPath }/mPicUpload/${host.s_hpic}">
 								<div class="modify_pic">
 									<label for="file-input">
 										<img src="${conPath }/img/camper_camera_icon.png">
 									</label>
-									<input type="file" id="file-input" style="display:none;">
+									<input type="file" name="s_hpic" id="file-input" style="display:none;">
 								</div>							
 							</div>
 						</td>
@@ -185,6 +194,7 @@
 								<option>대구은행</option>
 								<option>토스뱅크</option>
 							</select>
+							<br><span>등록한 은행명: ${host.s_hacc_bankname }</span>
 						</td>
 					</tr>
 					<tr>

@@ -58,7 +58,7 @@
 		<div id="div_modify_frm">
 			<form action="${conPath }/modifyGuest.do" method="post" id="modify_form" enctype="multipart/form-data">
 				<input type="hidden" name="dbPw" value="${guest.s_gpw }">
-				<input type="text" name="dbPic" value="${guest.s_gphoto }">
+				<input type="hidden" name="dbPic" value="${guest.s_gphoto }">
 				<table>
 					<caption>정보 수정</caption>
 					<tr>

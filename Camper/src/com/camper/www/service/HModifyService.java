@@ -23,71 +23,79 @@ public class HModifyService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String path = request.getRealPath("mPicUpload");
 		int maxSize = 1024*1024;
-		String s_hpic = "";
+		String[] spics = new String[3];
 		int result = HostDao.FAIL;
+		MultipartRequest mRequest = null;
 		try {
-			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
-			Enumeration<String> params = mRequest.getFileNames();
-			String param = params.nextElement();
-			s_hpic = mRequest.getFilesystemName(param);
-			String dbPw = mRequest.getParameter("dbPw");
-			System.out.println(dbPw);
-			String dbPhoto = mRequest.getParameter("dbPic");
-			String s_hid = mRequest.getParameter("mid");
-			String s_hpw = mRequest.getParameter("mpwNew");
-			System.out.println(s_hpw);
-			String s_hbis_name = mRequest.getParameter("bisname");
-			String s_hbis_num = mRequest.getParameter("bisnum");
-			String s_hbis_pic = mRequest.getParameter("bispic");
-			String s_haddr = mRequest.getParameter("bisaddr");
-			String s_hacc_bankname = mRequest.getParameter("bankname");
-			String s_haccount = mRequest.getParameter("haccount");
-			String s_hacc_pic = mRequest.getParameter("haccpic");
-			if(s_hpw.equals("")) {
-				s_hpw = dbPw;
+			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			Enumeration<String> paramNames = mRequest.getFileNames();
+			int idx = 0;
+			while(paramNames.hasMoreElements()) {
+				String param = paramNames.nextElement();
+				spics[idx] = mRequest.getFilesystemName(param);
+				idx++;
 			}
-			if(s_hpic == null) {
-				s_hpic = dbPhoto;
-			}
-			HostDao hDao = HostDao.getInstance();
-			HostDto host = new HostDto(s_hid, s_hpw, s_hbis_name, s_hbis_num, s_hbis_pic, s_haddr, s_hacc_bankname, s_haccount, s_hacc_pic, s_hpic);
-			result = hDao.modifyHost(host);
-			if(result == HostDao.SUCCESS) {
-				HttpSession session = request.getSession();
-				session.setAttribute("host", host);
-				request.setAttribute("modifyResult", "정보가 수정되었습니다");
-			}else {
-				request.setAttribute("modifyErrorMsg", "정보 수정이 실패하였습니다 입력한 정보를 확인해 주세요");
-			}	
-		} catch (IOException e) {
+		}catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		File serverFile = new File(path+"/"+s_hpic);
-		if(!s_hpic.equals("noprofile.jpg") && result==HostDao.SUCCESS) {
+		for(String imgfile : spics) {
 			InputStream is = null;
 			OutputStream os = null;
-			try {
-				is = new FileInputStream(serverFile);
-				os = new FileOutputStream("C:\\JU\\source\\08_1stProject\\Project1_Camper\\Camper\\WebContent\\mPicUpload"+s_hpic);
-				byte[] bs = new byte[(int)serverFile.length()];
-				while(true) {
-					int readByteCnt = is.read(bs);
-					if(readByteCnt==-1) break;
-					os.write(bs, 0, readByteCnt);
-				}
-				System.out.println("첨부된 파일("+s_hpic+") 복사 완료");
-			} catch (IOException e) {
-				System.out.println(e.getMessage());
-			} finally {
+			File serverFile = new File(path + "/" +imgfile);
+			if(serverFile.exists()) {
 				try {
-					if(os!=null) os.close();
-					if(is!=null) is.close();
-				}catch (IOException e) {
+					is = new FileInputStream(serverFile);
+					os = new FileOutputStream("C:\\JU\\source\\08_1stProject\\Camper\\WebContent\\mPicUpload\\"+imgfile);
+					byte[] bs = new byte[(int)serverFile.length()];
+					while(true) {
+						int readByteCnt = is.read(bs);
+						if(readByteCnt == -1) break;
+						os.write(bs, 0, readByteCnt);
+					}
+				} catch (Exception e) {
 					System.out.println(e.getMessage());
+				} finally {
+					try {
+						if(os!=null) os.close();
+						if(is!=null) is.close();
+					} catch (IOException e) {
+						System.out.println(e.getMessage());
+					}
 				}
 			}
 		}
+		String dbPw = mRequest.getParameter("dbPw");
+		String dbPhoto = mRequest.getParameter("dbPic");
+		String dbBisPic = mRequest.getParameter("dbBisPic");
+		String dbAccPic = mRequest.getParameter("dbAccPic");
+		String dbBank = mRequest.getParameter("bankname");
+		String s_hpic = spics[2]!=null ? spics[2] : dbPhoto;
+		String s_hid = mRequest.getParameter("mid");
+		String s_hpw = mRequest.getParameter("mpwNew");
+		if(s_hpw.equals("")) {
+			s_hpw = dbPw;
+		}
+		String s_hbis_name = mRequest.getParameter("bisname");
+		String s_hbis_num = mRequest.getParameter("bisnum");
+		String s_hbis_pic = spics[1]!=null ? spics[1] : dbBisPic;
+		String s_haddr = mRequest.getParameter("bisaddr");
+		String s_hacc_bankname = mRequest.getParameter("bankname");
+		if(s_hacc_bankname.equals("")) {
+			s_hacc_bankname = dbBank;
+		}
+		String s_haccount = mRequest.getParameter("haccount");
+		String s_hacc_pic = spics[0]!=null ? spics[0] : dbAccPic;
+		HostDao hDao = HostDao.getInstance();
+		HostDto host = new HostDto(s_hid, s_hpw, s_hbis_name, s_hbis_num, s_hbis_pic, s_haddr, s_hacc_bankname, s_haccount, s_hacc_pic, s_hpic);
+		result = hDao.modifyHost(host);
+		if(result == HostDao.SUCCESS) {
+			HttpSession session = request.getSession();
+			session.setAttribute("host", host);
+			request.setAttribute("modifyResult", "정보가 수정되었습니다");
+		}else {
+			request.setAttribute("modifyErrorMsg", "정보 수정이 실패하였습니다 입력한 정보를 확인해 주세요");
+		}	
 	}
-
 }
+
 

@@ -35,9 +35,8 @@ public class GModifyService implements Service {
 			String dbPw = mRequest.getParameter("dbPw");
 			String dbPhoto = mRequest.getParameter("dbPic");
 			if(s_gphoto == null) {
-				s_gphoto = dbPhoto;
+				s_gphoto = "noprofile.jpg";
 			}
-			System.out.println(dbPhoto);
 			String s_gid = mRequest.getParameter("mid");
 			String s_gpw = mRequest.getParameter("mpwNew");
 			if(s_gpw.equals("")) {

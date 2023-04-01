@@ -140,7 +140,6 @@ public class Controller extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "guest/mypageGuest.jsp";	
 		}else if(command.equals("/modifyHost.do")) {
-			System.out.println("잘");
 			service = new HModifyService();
 			service.execute(request, response);
 			viewPage = "host/mypageHost.jsp";	

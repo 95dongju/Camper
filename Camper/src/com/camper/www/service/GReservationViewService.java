@@ -23,7 +23,7 @@ public class GReservationViewService implements Service {
 		if(yearParam == null && monthParam == null) {
 			Calendar cal = Calendar.getInstance();
 			year = cal.get(Calendar.YEAR);
-			month = cal.get(Calendar.MONTH);
+			month = cal.get(Calendar.MONTH) + 1;
 			yearParam = String.valueOf(year);
 			monthParam = month<10 ? "0"+month : String.valueOf(month);
 		}else {
