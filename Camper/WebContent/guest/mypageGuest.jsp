@@ -31,8 +31,8 @@
 			</div>
 			<div class="myinfo_lnb">
 				<ul>
-					<li><a href=""><img src="${conPath }/img/camper_booking_icon.png"><br>예약 내역</a></li>
-					<li><a href=""><img src="${conPath }/img/camper_review_icon.png"><br>나의 후기</a></li>
+					<li><a href="${conPath }/reservationGuestList.do?s_gid=${guest.s_gid}&gr_status=Y"><img src="${conPath }/img/camper_booking_icon.png"><br>예약 내역</a></li>
+					<li><a href="${conPath }/reviewListforGuest.do?s_gid=${guest.s_gid}"><img src="${conPath }/img/camper_review_icon.png"><br>나의 후기</a></li>
 					<li><a href=""><img src="${conPath }/img/camper_like_icon.png"><br>찜한 캠핑장</a></li>
 				</ul>
 			</div>

@@ -9,68 +9,36 @@
 	<meta charset="UTF-8">
 	<title>Camper</title>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script>
-		$(function(){
-			$("tr").click(function(){
-				var s_camp_no = $(this).children().eq(0).text();
-				location.href='${conPath}/campgroundView.do?s_camp_no='+s_camp_no+'&pageNum=${pageNum}';
-			});
-		});
-	</script>
+	<link href="${conPath }/css/div_list.css" rel="stylesheet">
 	<style>
-		#div_cgList  {
-			width: 1000px;
-			padding-top: 100px;
-			margin: 0 auto;
-			text-align: center;
-		}
-		#div_cgList p {
-			font-size: 1.4em;
-			color: grey;
-			height: 300px;
-			line-height: 300px;
-		}
-		#div_cgList table {
-			width: 600px;	
-			margin: 0 auto;	
-			border: none;
-		}
-		#div_cgList table caption {
-			font-size: 2em;
-			padding: 10px;
-			color: #596E37;
-		}
-		#div_cgList table tr {
-			background-color: pink;
-			border: none;
-		}
-		#div_cgList table tr:hover:not(.tr_title) {
-			color: grey;
-			background-color: white;
-			cursor: pointer;
-		}
-		#div_cgList table tr td {
-			padding: 10px;
-			border: none;
-		}
-		#div_cgList .paging {
-			margin: 20px;
-		}
-		#div_cgList .btn {
-			width: 300px;
-			height: 40px;
-			border: 1px solid #596E37;
-			background-color: #596E37;
-			color: white;
-			cursor: pointer;
-		}
-		#div_cgList .btn:hover {
-			border: none;
-			background-color: #92B35E;
-		}
-		#div_cgList .btn:active {
-			border: none;
-		}
+	#div_List {
+		margin: 0 auto;
+		text-align: center;
+		height: 100%;
+	}
+	#div_List #table_wrap caption {
+		font-size: 1.5em;
+		color: #596E37;
+	}
+	#div_List .paging {
+		margin: 20px auto;
+	}
+	#div_List .btn {
+		width: 300px;
+		display: inline-box;
+		height: 40px;
+		border: 1px solid #596E37;
+		background-color: #596E37;
+		color: white;
+		cursor: pointer;
+	}
+	#div_List .btn:hover {
+		border: none;
+		background-color: #92B35E;
+	}
+	#div_List .btn:active {
+		border: none;
+	}
 	</style>
 </head>
 <body>
@@ -92,25 +60,42 @@
 			history.back();
 		</script>
 	</c:if>
-	<div id="div_cgList">
-		<c:if test="${totCnt == 0 }">
-			<p>등록된 캠핑장이 없습니다</p>
-		</c:if>
-		<c:if test="${totCnt != 0 }">
-			<table>
-			<caption>캠핑장 목록</caption>
-				<tr class="tr_title">
-					<td>고유번호</td>
-					<td>이름</td>
-				</tr>
-				<c:forEach items="${cgList }" var="cgList">
-				<tr>
-					<td>${cgList.s_camp_no }</td> 
-					<td>${cgList.s_camp_name }</td>
-				</tr>
-				</c:forEach>
-			</table>
-		</c:if>
+	<c:if test="${not empty deleteCGResult }">
+		<script>
+			alert('${deleteCGResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty deleteFailCuzRez }">
+		<script>
+			alert('${deleteFailCuzRez}');
+			history.back();
+		</script>
+	</c:if>
+	<div id="div_List">
+		<div id="table_wrap">
+			<c:if test="${totCnt == 0 }">
+				<p>등록된 캠핑장이 없습니다</p>
+			</c:if>
+			<c:if test="${totCnt != 0 }">
+				<table>
+				<caption>캠핑장 목록</caption>
+					<tr class="tr_title">
+						<td>고유번호</td>
+						<td>이름</td>
+						<td>캠핑장 수정</td>
+						<td>캠핑장 삭제</td>
+					</tr>
+					<c:forEach items="${cgList }" var="cgList">
+					<tr class="tr_content">
+						<td onclick="location.href='${conPath}/campgroundView.do?s_camp_no=${cgList.s_camp_no }&s_hid=${host.s_hid }'">${cgList.s_camp_no }</td> 
+						<td onclick="location.href='${conPath}/campgroundView.do?s_camp_no=${cgList.s_camp_no }&s_hid=${host.s_hid }'">${cgList.s_camp_name }</td>
+						<td><button onclick="location.href='${conPath}/campgroundModifyView.do?s_camp_no=${cgList.s_camp_no }'">수정</button></td>
+						<td><button onclick="location.href='${conPath}/campgroundDelete.do?s_camp_no=${cgList.s_camp_no }'">삭제</button></td>
+					</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+		</div>
 		<div class="paging">
 			<c:if test="${startPage > BLOCKSIZE }">
 				<a href="${conPath }/campgroundListView.do?pageNum=${startPage-1 }"> ◀ </a>
@@ -129,6 +114,5 @@
 		</div>
 		<button class="btn" onclick="location.href='${conPath}/campgroundRegistView.do'">캠핑장 등록하기</button>
 	</div>
-	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

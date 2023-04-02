@@ -14,9 +14,11 @@ public class GReservationService implements Service {
 		String s_site_no = request.getParameter("s_site_no");
 		ReservationDao rezDao = ReservationDao.getInstance();
 		int reserved = rezDao.getReservation(s_site_no, selectDate);
-		if(reserved==0) {
+		if(reserved == 0) {
 			int reservationResult = rezDao.reservation(s_site_no, selectDate, s_gid);
 			request.setAttribute("reservationResult", reservationResult);
+		}else {
+			request.setAttribute("reservationResult", 0);
 		}
 	}
 }

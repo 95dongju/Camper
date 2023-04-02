@@ -23,7 +23,7 @@
 		<h2>마이페이지</h2>
 		<div id="div_myinfo">
 			<div class="member_info">
-				<p id="member_photo"><img src="${conPath }/img/${host.s_hpic}"></p>
+				<p id="member_photo"><img src="${conPath }/mPicUpload/${host.s_hpic}"></p>
 				<br>
 				<p><b>${host.s_hbis_name }</b> 호스트 님, 어서오세요!</p>
 				<br>
@@ -31,8 +31,8 @@
 			</div>
 			<div class="myinfo_lnb">
 				<ul>
-					<li><a href=""><img src="${conPath }/img/camper_booking_icon.png"><br>예약 현황</a></li>
-					<li><a href=""><img src="${conPath }/img/camper_review_icon.png"><br>내 캠핑장 후기</a></li>
+					<li><a href="${conPath }/reservationGuestListForHost.do?s_hid=${host.s_hid}&gr_status=Y"><img src="${conPath }/img/camper_booking_icon.png"><br>예약 현황</a></li>
+					<li><a href="${conPath }/reviewListforHost.do?s_hid=${host.s_hid}"><img src="${conPath }/img/camper_review_icon.png"><br>내 캠핑장 후기</a></li>
 					<li><a href="${conPath }/campgroundListView.do?s_hid=${host.s_hid}"><img src="${conPath }/img/camper_campground_icon.png"><br>캠핑장 관리</a></li>
 				</ul>
 			</div>

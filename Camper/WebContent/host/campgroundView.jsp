@@ -68,8 +68,8 @@
 					</c:if>
 				</div>
 				<p>설명: ${cgView.s_camp_desc }</p>
-					<c:if test="${not empty host }">
-						<p class="host_delete">캠핑장 삭제하기</p>
+					<c:if test="${param.s_hid == host.s_hid }">
+						<p class="host_delete" onclick="location.href='${conPath}/campgroundDelete.do?s_camp_no=${param.s_camp_no }'">캠핑장 삭제하기</p>
 					</c:if>
 			</div>
 		</div>

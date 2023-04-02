@@ -1,35 +1,40 @@
 package com.camper.www.dto;
 
-import java.sql.Timestamp;
-
 public class ReviewDto {
 	private int i_rev_no;
-	private String s_gname;
+	private String s_gnick;
+	private String s_camp_name;
 	private String s_camp_no;
 	private String s_gid;
 	private String s_rev_title;
 	private String s_rev_content;
-	private Timestamp d_rdate;
+	private String d_rdate;
 	private String s_rev_ip;
 	private String s_rev_mainpic;
 	private String s_rev_pic1;
 	private String s_rev_pic2;
 	private String s_rev_pic3;
 	public ReviewDto() {}
-	public ReviewDto(String s_gname, String s_rev_title, String s_rev_content, Timestamp d_rdate,
+	public ReviewDto(String s_gnick, int i_rev_no, String s_camp_name, String s_rev_title, String s_rev_content, String d_rdate,
 			String s_rev_mainpic) {
-		this.s_gname = s_gname;
+		this.s_gnick = s_gnick;
+		this.i_rev_no = i_rev_no;
+		this.s_camp_name = s_camp_name;
 		this.s_rev_title = s_rev_title;
 		this.s_rev_content = s_rev_content;
 		this.d_rdate = d_rdate;
 		this.s_rev_mainpic = s_rev_mainpic;
 	}
-	public ReviewDto(String s_gname, String s_rev_title, String s_rev_content, Timestamp d_rdate, String s_rev_mainpic,
-			String s_rev_pic1, String s_rev_pic2, String s_rev_pic3) {
-		this.s_gname = s_gname;
+	public ReviewDto(String s_gnick, String s_camp_no, String s_gid, String s_rev_title,
+			String s_rev_content, String d_rdate, String s_rev_ip, String s_rev_mainpic, String s_rev_pic1,
+			String s_rev_pic2, String s_rev_pic3) {
+		this.s_gnick = s_gnick;
+		this.s_camp_no = s_camp_no;
+		this.s_gid = s_gid;
 		this.s_rev_title = s_rev_title;
 		this.s_rev_content = s_rev_content;
 		this.d_rdate = d_rdate;
+		this.s_rev_ip = s_rev_ip;
 		this.s_rev_mainpic = s_rev_mainpic;
 		this.s_rev_pic1 = s_rev_pic1;
 		this.s_rev_pic2 = s_rev_pic2;
@@ -41,11 +46,17 @@ public class ReviewDto {
 	public void setI_rev_no(int i_rev_no) {
 		this.i_rev_no = i_rev_no;
 	}
-	public String getS_gname() {
-		return s_gname;
+	public String getS_gnick() {
+		return s_gnick;
 	}
-	public void setS_gname(String s_gname) {
-		this.s_gname = s_gname;
+	public void setS_gnick(String s_gnick) {
+		this.s_gnick = s_gnick;
+	}
+	public String getS_camp_name() {
+		return s_camp_name;
+	}
+	public void setS_camp_name(String s_camp_name) {
+		this.s_camp_name = s_camp_name;
 	}
 	public String getS_camp_no() {
 		return s_camp_no;
@@ -71,10 +82,10 @@ public class ReviewDto {
 	public void setS_rev_content(String s_rev_content) {
 		this.s_rev_content = s_rev_content;
 	}
-	public Timestamp getD_rdate() {
+	public String getD_rdate() {
 		return d_rdate;
 	}
-	public void setD_rdate(Timestamp d_rdate) {
+	public void setD_rdate(String d_rdate) {
 		this.d_rdate = d_rdate;
 	}
 	public String getS_rev_ip() {
@@ -109,9 +120,9 @@ public class ReviewDto {
 	}
 	@Override
 	public String toString() {
-		return "ReviewDto [i_rev_no=" + i_rev_no + ", s_camp_no=" + s_camp_no + ", s_gid=" + s_gid + ", s_rev_title="
-				+ s_rev_title + ", s_rev_content=" + s_rev_content + ", d_rdate=" + d_rdate + ", s_rev_ip=" + s_rev_ip
-				+ ", s_rev_mainpic=" + s_rev_mainpic + ", s_rev_pic1=" + s_rev_pic1 + ", s_rev_pic2=" + s_rev_pic2
-				+ ", s_rev_pic3=" + s_rev_pic3 + "]";
+		return "ReviewDto [i_rev_no=" + i_rev_no + ", s_gnick=" + s_gnick + ", s_camp_no=" + s_camp_no + ", s_gid="
+				+ s_gid + ", s_rev_title=" + s_rev_title + ", s_rev_content=" + s_rev_content + ", d_rdate=" + d_rdate
+				+ ", s_rev_ip=" + s_rev_ip + ", s_rev_mainpic=" + s_rev_mainpic + ", s_rev_pic1=" + s_rev_pic1
+				+ ", s_rev_pic2=" + s_rev_pic2 + ", s_rev_pic3=" + s_rev_pic3 + "]";
 	}
 }

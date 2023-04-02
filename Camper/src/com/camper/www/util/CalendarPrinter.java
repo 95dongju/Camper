@@ -45,20 +45,6 @@ public class CalendarPrinter {
 			}
 		}
 	}
-	public void printConsole() {
-		for(String t :title) {
-			System.out.print(t + "\t");
-		}
-		System.out.println();
-		for(int i=0 ; i<calDate.length ; i++) {
-			for(int j=0 ; j<calDate[i].length ; j++) {
-				if(calDate[i][j]!=null) {
-					System.out.print(calDate[i][j] + "\t");
-				}
-			}
-			System.out.println();
-		}
-	}
 	public String[][] getCalDate() {
 		return calDate;
 	}

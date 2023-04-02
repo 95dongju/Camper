@@ -9,27 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camper.www.service.GDeleteReviewService;
 import com.camper.www.service.GJoinService;
 import com.camper.www.service.GLoginService;
 import com.camper.www.service.GLogoutService;
 import com.camper.www.service.GModifyService;
 import com.camper.www.service.GModifyViewService;
-import com.camper.www.service.GReservationListService;
+import com.camper.www.service.GReservationCOGuestListService;
+import com.camper.www.service.GReservationGuestListService;
 import com.camper.www.service.GReservationService;
 import com.camper.www.service.GReservationViewService;
+import com.camper.www.service.GReviewListService;
+import com.camper.www.service.GReviewViewService;
 import com.camper.www.service.GWithdrawService;
+import com.camper.www.service.GWriteReviewService;
 import com.camper.www.service.GemailConfirmService;
 import com.camper.www.service.GidConfirmService;
 import com.camper.www.service.HCampgroundDelService;
 import com.camper.www.service.HCampgroundListService;
+import com.camper.www.service.HCampgroundModifyService;
+import com.camper.www.service.HCampgroundModifyViewService;
 import com.camper.www.service.HCampgroundRegistService;
 import com.camper.www.service.HCampgroundViewService;
 import com.camper.www.service.HCampsiteRegistService;
+import com.camper.www.service.HRejectReservationViewService;
 import com.camper.www.service.HJoinService;
 import com.camper.www.service.HLoginService;
 import com.camper.www.service.HLogoutService;
 import com.camper.www.service.HModifyService;
 import com.camper.www.service.HModifyViewService;
+import com.camper.www.service.HReservationCOGuestListForHostService;
+import com.camper.www.service.HReservationGuestListForHostService;
+import com.camper.www.service.HReviewListService;
 import com.camper.www.service.HWithdrawService;
 import com.camper.www.service.HbisnumConfirmService;
 import com.camper.www.service.HemailConfirmService;
@@ -73,7 +84,7 @@ public class Controller extends HttpServlet {
 		}else if(command.equals("/campNameListAppend.do")) {
 			service = new MCampNameListAppendService();
 			service.execute(request, response);
-			viewPage = "main/campgroundAppend.jsp.jsp";
+			viewPage = "main/campgroundAppend.jsp";
 		// ***************** 게스트/호스트 로그인 *****************
 		}else if(command.equals("/gidConfirm.do")) {
 			service = new GidConfirmService();
@@ -148,13 +159,13 @@ public class Controller extends HttpServlet {
 		}else if(command.equals("/withdrawGuest.do")) {
 			service = new GWithdrawService();
 			service.execute(request, response);
-			viewPage = "member/main.jsp";	
+			viewPage = "main/main.jsp";	
 		}else if(command.equals("/withdrawHostView.do")) {
 			viewPage = "host/withdrawHost.jsp";
-		}else if(command.equals("/withdrawGuest.do")) {
+		}else if(command.equals("/withdrawHost.do")) {
 			service = new HWithdrawService();
 			service.execute(request, response);
-			viewPage = "member/main.jsp";	
+			viewPage = "main/main.jsp";	
 			// ************ 호스트 캠핑장 등록 / 삭제 ***************
 		}else if(command.equals("/campgroundListView.do")) {
 			service = new HCampgroundListService();
@@ -174,6 +185,14 @@ public class Controller extends HttpServlet {
 			service = new HCampgroundDelService();
 			service.execute(request, response);
 			viewPage = "/campgroundListView.do";
+		}else if(command.equals("/campgroundModifyView.do")) {
+			service = new HCampgroundModifyViewService();
+			service.execute(request, response);
+			viewPage = "host/campgroundModify.jsp";
+		}else if(command.equals("/campgroundModify.do")) {
+			service = new HCampgroundModifyService();
+			service.execute(request, response);
+			viewPage = "/campgroundListView.do";
 		// *************** 게스트 예약 페이지 ***************
 		}else if(command.equals("/reservationView.do")) {
 			service = new GReservationViewService();
@@ -183,6 +202,48 @@ public class Controller extends HttpServlet {
 			service = new GReservationService();
 			service.execute(request, response);
 			viewPage = "reservationView.do";
+		}else if(command.equals("/reservationGuestList.do")) {
+			service = new GReservationGuestListService();
+			service.execute(request, response);
+			viewPage = "guest/reservationGuestList.jsp";
+		}else if(command.equals("/reservationCOGuestList.do")) {
+			service = new GReservationCOGuestListService();
+			service.execute(request, response);
+			viewPage = "guest/reservationGuestList.jsp";
+		}else if(command.equals("/reservationGuestListForHost.do")) {
+			service = new HReservationGuestListForHostService();
+			service.execute(request, response);
+			viewPage = "host/reservationGuestListForHost.jsp";
+		}else if(command.equals("/reservationCOGuestListForHost.do")) {
+			service = new HReservationCOGuestListForHostService();
+			service.execute(request, response);
+			viewPage = "host/reservationGuestListForHost.jsp";
+		}else if(command.equals("/rejectReservation.do")) {
+			service = new HRejectReservationViewService();
+			service.execute(request, response);
+			viewPage = "host/reservationGuestListForHost.jsp";
+		}else if(command.equals("/writeReviewView.do")) {
+			viewPage = "guest/writeReview.jsp";
+		}else if(command.equals("/writeReview.do")) {
+			service = new GWriteReviewService();
+			service.execute(request, response);
+			viewPage = "guest/reservationGuestList.jsp";
+		}else if(command.equals("/reviewListforGuest.do")) {
+			service = new GReviewListService();
+			service.execute(request, response);
+			viewPage = "guest/reviewGuestList.jsp";
+		}else if(command.equals("/reviewView.do")) {
+			service = new GReviewViewService();
+			service.execute(request, response);
+			viewPage = "main/reviewView.jsp";
+		}else if(command.equals("/deleteReview.do")) {
+			service = new GDeleteReviewService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+		}else if(command.equals("/reviewListforHost.do")) {
+			service = new HReviewListService();
+			service.execute(request, response);
+			viewPage = "host/reviewGuestList.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

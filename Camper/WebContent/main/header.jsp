@@ -130,18 +130,9 @@
 					<div class="gnb">
 						<ul>
 							<li><a href="${conPath }/mypageHost.do">마이페이지</a></li>
-							<li><a href="${conPath }/reservationList.do">예약 목록</a></li>
+							<li><a href="${conPath }/reservationGuestListForHost.do?s_hid=${host.s_hid}&gr_status=Y">예약 목록</a></li>
 							<li><a href="${conPath }/campgroundListView.do?s_hid=${host.s_hid}">캠핑장 관리</a></li>
 							<li><a href="${conPath }/logoutHost.do">로그아웃</a></li>
-						</ul>
-					</div>
-				</c:if>
-				<c:if test="${not empty admin}">
-					<div class="gnb">
-						<ul>
-							<li><a href="${conPath }/memberList.do">회원 관리</a></li>
-							<li><a href="${conPath }/reviewList.do">리뷰 관리</a></li>
-							<li><a href="${conPath }/logoutAdmin.do">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:if>

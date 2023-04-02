@@ -15,6 +15,7 @@ SELECT * FROM MEMBER_GUEST;
 
 SELECT * FROM MEMBER_HOST;
 
+
 INSERT INTO MEMBER_HOST VALUES
     ('host', 'host@mail.com', '111', '최명희', '010-1111-1111', '지리산명인조합', '424-12-12332', 'bispic.jpg', '경남 산청군 시천면 지리산대로1478번길 31-10', '농협', '1111-1111-111111', 'account.jpg', 'null.jpg', 'N', 'N', SYSDATE);
 
@@ -27,9 +28,14 @@ INSERT INTO HOST_CAMPGROUND
     VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '자연캠핑장', '자연을 벗삼아', '강원 홍천군 서면 개야마을길 68-27', '055-2091-2091', 'host', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
 
 
+
+
 INSERT INTO HOST_CAMPGROUND 
     VALUES (HOST_CAMPGROUND_NO_SEQ.NEXTVAL, '난지캠핑장', '난지캠핑장', '서울특별시 마포구 상암동 495-81', '02-0929-1928', 'host1', 'main.jpg', 'map.jpg', 'photo1.jpg', 'photo2.jpg', NULL, NULL, NULL, 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', SYSDATE);
 
+
+INSERT INTO GUEST_RESERVATION 
+    VALUES (TO_CHAR(SYSDATE, 'YYMMDD')||'-'||(TO_CHAR(GUEST_RESERVATION_NO_SEQ.NEXTVAL)), 'CS111111', TO_CHAR(TO_DATE('2023-04-01', 'YYYY-MM-DD')), 'guest', SYSDATE, 'N');
 
 SELECT * FROM HOST_CAMPSITE;
 

@@ -27,6 +27,9 @@
 		#wrap #review_frm table tr td {
 			text-align: center;
 		}
+		#wrap #review_frm table tr td .input_title {
+			font-size: 1.2em;
+		}
 		#wrap #review_frm table input:not(.btn, .pic) {
 			width: 800px;
 			margin: 5px;
@@ -34,7 +37,6 @@
 			padding: 5px;
 			border: 1px solid gray;
 			box-sizing: border-box;
-			font-size: 1.2em;
 		}
 		#wrap #review_frm table textarea{
 			font-size: 1.1em;
@@ -68,12 +70,14 @@
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="wrap">
-		<form action="" method="post" enctype="multipart/form-data" id="review_frm">
+		<form action="writeReview.do" method="post" enctype="multipart/form-data" id="review_frm">
+			<input type="hidden" name="s_camp_no" value="${param.s_camp_no }">
+			<input type="hidden" name="s_gid" value="${guest.s_gid }">
 			<table>
 				<caption>리뷰 작성하기</caption>
 				<tr>
 					<td>
-						<input type="text" name="review_title" placeholder="제목을 입력하세요" required="required">
+						<input type="text" class="input_title" name="review_title" placeholder="제목을 입력하세요" required="required">
 					</td>
 				</tr>
 				<tr>
@@ -83,7 +87,10 @@
 				</tr>
 				<tr>
 					<td>
-						
+						<input type="file" name="mainpic">
+						<input type="file" name="pic1">
+						<input type="file" name="pic2">
+						<input type="file" name="pic3">
 					</td>
 				</tr>
 				<tr>

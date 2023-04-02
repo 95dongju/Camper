@@ -35,6 +35,23 @@
 			history.back();
 		</script>
 	</c:if>
+	<c:if test="${not empty withdrawalResult }">
+		<script>
+			alert('${withdrawalResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty withdrawFailCuzRez }">
+		<script>
+			alert('${withdrawFailCuzRez}');
+			history.back();
+		</script>
+	</c:if>
+	<c:if test="${not empty deleteRVResult }">
+		<script>
+			alert('${deleteRVResult}');
+			history.back();
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="main_content">
 		<div id="upper_banner">

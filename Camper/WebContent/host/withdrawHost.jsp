@@ -32,13 +32,13 @@
  	<c:if test="${empty host}">
 		<script>
 			alert('로그인 후 이용 가능합니다.');
-			location.href='${conPath}/member/login.jsp';
+			location.href='${conPath}/host/loginHost.jsp';
 		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div id="wrap">
 		<div id="div_modify_frm">
-			<form action="${conPath }/withdrawGuest.do" method="post" id="modify_form">
+			<form action="${conPath }/withdrawHost.do" method="post" id="modify_form">
 				<table>
 					<caption>탈퇴하시겠습니까?</caption>
 					<tr>

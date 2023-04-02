@@ -16,7 +16,7 @@ public class GReservationViewService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String s_camp_no = request.getParameter("s_camp_no");
+		String s_site_no = request.getParameter("s_site_no");
 		String yearParam = request.getParameter("year");
 		String monthParam = request.getParameter("month");
 		int year, month;
@@ -33,9 +33,9 @@ public class GReservationViewService implements Service {
 		}
 		CalendarPrinter calPrint = new CalendarPrinter(year, month);
 		ReservationDao reservationDao = ReservationDao.getInstance();
-		ArrayList<ReservationDto> reservations = reservationDao.getReservation(s_camp_no, yearParam, monthParam);
+		ArrayList<ReservationDto> reservations = reservationDao.getReservation(s_site_no, yearParam, monthParam);
 		CampgroundDao campGroundDao = CampgroundDao.getInstance();
-		CampgroundDto camp = campGroundDao.cgView(s_camp_no);
+		CampgroundDto camp = campGroundDao.cgView(s_site_no);
 		request.setAttribute("reservations", reservations);
 		request.setAttribute("calPrint", calPrint);
 		request.setAttribute("year", year);

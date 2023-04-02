@@ -25,19 +25,33 @@
 		}
 		#wrap table tr td {
 			padding: 5px;
+			width: 100px;
+		}
+		#wrap table tr td select {
+			width: 70px;
+			height: 30px;
+			padding: 4px;
+			border: 1px solid gray;
+			box-sizing: border-box;
+			margin: 10px;
+		}
+		#wrap table tr td select[name=month] {
+			width: 50px;
+		}
+		#wrap table tr td span {
+			font-size: 0.7em;
 		}
 	</style>
 	<script>
 		$(document).ready(function(){
-			$('select[name="year"], select[name="month"]').change(function(){
+			var now = new Date();
+			var nowYear = now.getFullYear();
+			var nowMonth = now.getMonth()+1;
+			$('select[name="year"], select[name="month"]').change(function(){	
 				$('form').submit();
 			});
-			
 			$('td.reservationTd').click(function(){
 				// 오늘 날짜
-				var now = new Date();
-				var nowYear = now.getFullYear();
-				var nowMonth = now.getMonth()+1;
 				var nowDay = now.getDate();
 				var today = nowYear + '-' + (nowMonth<10 ? "0"+nowMonth : nowMonth) + '-' + (nowDay<10 ? "0"+nowDay : nowDay);
 				// 파라미터로 넘길 날짜
@@ -72,7 +86,10 @@
 		</script>
 	</c:if>
 	<c:if test="${reservationResult == 1}">
-		<script>alert('예약되었습니다');</script>
+		<script>
+			alert('예약되었습니다');
+			location.href='${conPath }/reservationGuestList.do?s_gid=${guest.s_gid}&gr_status=Y';
+		</script>
 	</c:if>
 	<c:if test="${reservationResult == 0}">
 		<script>alert('예약에 실패하였습니다');</script>
@@ -84,7 +101,7 @@
 							<input type="hidden" name="s_site_no" value="${param.s_site_no }">
 							<input type="hidden" name="s_gid" value="${guest.s_gid }">
 							<select name="year">
-								<c:forEach var="i" begin="${year }" end="${year+10 }">
+								<c:forEach var="i" begin="2022" end="${year+1 }">
 									<c:if test="${i eq year }">
 										<option selected="selected">${i }</option>
 									</c:if>
@@ -121,7 +138,7 @@
 								<c:set var="reserved" value="0"/>
 								<c:forEach var="reservation" items="${reservations }">
 									<c:if test="${calPrint.calDate[i][j] == reservation.day }">
-										<td style="color:#cccccc; background-color: #FFE271; cursor: default;">
+										<td style="color:#828282; background-color: #fff0cc; cursor: default;">
 											<h3>${calPrint.calDate[i][j] }</h3>
 											<span>이미 예약된 날짜입니다</span><br>
 										</td>

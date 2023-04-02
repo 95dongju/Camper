@@ -1,0 +1,69 @@
+@charset "UTF-8";
+#div_List {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#div_List #nav_rez {
+	width: 1000px;
+	margin: 0 auto;
+	height: 60px;
+}
+#div_List #nav_rez ul li {
+	width: 33.3%;
+	float: left;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+#div_List #nav_rez ul li a {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	font-size: 1.2em;
+}
+#div_List #nav_rez ul li a:hover, a:visited {
+	background-color: #F8F8F8;
+	border-radius: 10px 10px 0 0;
+}
+#div_List #table_wrap {
+	margin: 0 auto;
+	height: 430px;
+	background-color: #F8F8F8;
+}
+#div_List #table_wrap p {
+	text-align: center;
+	height: 300px;
+	line-height: 300px;
+	font-size: 1.3em;
+}
+#div_List #table_wrap table {
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 5px;
+}
+#div_List #table_wrap table .tr_title {
+	color: #596E37;
+	font-weight: bold;
+	height: 35px;
+}
+#div_List #table_wrap table .tr_content:hover {
+	cursor: pointer;
+	color: gray;
+}
+#div_List #table_wrap table tr:not(.tr_title) {
+	height: 30px;
+	font-size: 0.9em;
+}
+#div_List .paging {
+	margin: 0 auto;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+#div_List .paging a {
+	margin: 10px;
+}

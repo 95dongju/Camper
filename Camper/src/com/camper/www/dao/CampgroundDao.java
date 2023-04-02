@@ -124,21 +124,21 @@ public class CampgroundDao {
 		int result = FAIL;
 		Connection conn 		= null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE HOST_CAMPGROUND SET S_CAMP_DESC = ? " + 
-				"                            S_CAMP_MAINPIC = ? " + 
-				"                            S_CAMP_MAPPIC = ? " + 
-				"                            S_CAMP_PIC1 = ? " + 
-				"                            S_CAMP_PIC2 = ? " + 
-				"                            S_CAMP_PIC3 = ? " + 
-				"                            S_CAMP_PIC4 = ? " + 
-				"                            S_CAMP_PIC5 = ? " + 
-				"                            S_BATHROOM = ? " + 
-				"                            S_SHOWERBOOTH = ? " + 
-				"                            S_STORE = ? " + 
-				"                            S_SINK = ? " + 
-				"                            S_WIFI = ? " + 
-				"                            S_PLAYGROUND = ? " + 
-				"                            S_WITH_PET = ? " + 
+		String sql = "UPDATE HOST_CAMPGROUND SET S_CAMP_DESC = ?, " + 
+				"                            S_CAMP_MAINPIC = ?, " + 
+				"                            S_CAMP_MAPPIC = ?, " + 
+				"                            S_CAMP_PIC1 = ?, " + 
+				"                            S_CAMP_PIC2 = ?, " + 
+				"                            S_CAMP_PIC3 = ?, " + 
+				"                            S_CAMP_PIC4 = ?, " + 
+				"                            S_CAMP_PIC5 = ?, " + 
+				"                            S_BATHROOM = ?, " + 
+				"                            S_SHOWERBOOTH = ?, " + 
+				"                            S_STORE = ?, " + 
+				"                            S_SINK = ?, " + 
+				"                            S_WIFI = ?, " + 
+				"                            S_PLAYGROUND = ?, " + 
+				"                            S_WITH_PET = ?, " + 
 				"                            S_SWIM_POOL = ? " + 
 				"                        WHERE S_CAMP_NO = ?";
 		try {
@@ -279,42 +279,6 @@ public class CampgroundDao {
 			}
 		}
 		return cgView;
-	}
-	// 7. 캠핑장 검색 (위치)
-	public ArrayList<CampgroundDto> cgLocList(String cgLoc, int startRow, int endRow) {
-		ArrayList<CampgroundDto> cgList = new ArrayList<CampgroundDto>();
-		Connection conn 		= null;
-		PreparedStatement pstmt = null;
-		ResultSet rs 			= null;
-		String sql = "SELECT S_CAMP_NO, S_CAMP_NAME, S_CAMP_ADDR, S_CAMP_MAINPIC " + 
-				"FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM HOST_CAMPGROUND) A, MEMBER_HOST MH " + 
-				"WHERE A.S_HID = MH.S_HID  AND S_CAMP_ADDR LIKE '%'||?||'%' AND MH.H_DEL_YN = 'N' AND A.CG_DEL_YN = 'N') WHERE RN BETWEEN ? AND ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cgLoc);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String s_camp_no = rs.getString("s_camp_no");
-				String s_camp_name = rs.getString("s_camp_name");
-				String s_camp_addr = rs.getString("s_camp_addr");
-				String s_camp_mainpic =  rs.getString("s_camp_mainpic");
-				cgList.add(new CampgroundDto(s_camp_no, s_camp_name, s_camp_addr, s_camp_mainpic));
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if(rs	!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn !=null) conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			}
-		}
-		return cgList;
 	}
 	// 8. 캠핑장 검색 (이름)
 	public ArrayList<CampgroundDto> cgNameList(String cgName, int startRow, int endRow) {
