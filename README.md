@@ -25,9 +25,9 @@
 
 <hr>
 
-[1. 작업분할 구조도]
+[1. 작업분할 구조도]<br>
 ![슬라이드6](https://user-images.githubusercontent.com/119286977/229388308-045fd962-c7dd-44c5-9074-0cd8835dfcf9.JPG)
-[2. Gantt Chard]
+[2. Gantt Chard]<br>
 ![슬라이드7](https://user-images.githubusercontent.com/119286977/229388448-26497868-2dfd-4f64-a93a-f5e01de0923c.JPG)
 [3. 이용자 권한]
 ![슬라이드10](https://user-images.githubusercontent.com/119286977/229388475-8f44893d-f937-4046-b212-f2cb45cd160a.JPG)
