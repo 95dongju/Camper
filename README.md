@@ -24,6 +24,7 @@
 [9. 실행화면 설명]()<br>
 
 <hr>
+
 ![슬라이드6](https://user-images.githubusercontent.com/119286977/229388308-045fd962-c7dd-44c5-9074-0cd8835dfcf9.JPG)
 ![슬라이드7](https://user-images.githubusercontent.com/119286977/229388448-26497868-2dfd-4f64-a93a-f5e01de0923c.JPG)
 ![슬라이드10](https://user-images.githubusercontent.com/119286977/229388475-8f44893d-f937-4046-b212-f2cb45cd160a.JPG)
