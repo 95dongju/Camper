@@ -14,6 +14,7 @@
 
 <h2>목차</h2>
 [1. 작업분할 구조도]()<br>
+https://user-images.githubusercontent.com/119286977/229388308-045fd962-c7dd-44c5-9074-0cd8835dfcf9.JPG
 [2. Gantt Chard]()<br>
 [3. 이용자 권한]()<br>
 [4. Usecase Diagram]()<br>
