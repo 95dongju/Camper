@@ -1,4 +1,4 @@
-<h1>CAMPER</h1>
+# CAMPER
 > 개별 프로젝트
 
 - 프로젝트명: CAMPER (캠핑 예약 관리 시스템)
@@ -10,9 +10,7 @@
 - 오픈 Library: jQuery v3.4.1, jQueryUI, randomNickUI
 - 프로젝트 소개: 캠핑장 예약 페이지와 관리 시스템을 통합하여 하나의 프로그램으로 이용 및 관리할 수 있는 통합형 캠핑장 예약 관리 시스템이다
 
-메인페이지 img
-
-<h2>목차</h2>
+## 목차
 [1. 작업분할 구조도](https://github.com/95dongju/Camper/blob/main/README.md#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br>
 [2. Gantt Chard](https://github.com/95dongju/Camper/blob/main/README.md#gantt-chard)<br>
 [3. 이용자 권한](https://github.com/95dongju/Camper/blob/main/README.md#%EC%9D%B4%EC%9A%A9%EC%9E%90-%EA%B6%8C%ED%95%9C)<br>
