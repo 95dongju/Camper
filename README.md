@@ -7,7 +7,7 @@
 - DBMS: Oracle 11g Express Edition
 - 언어: JAVA SE 8 Platform, HTML5, CSS, JavaScript
 - 디자인 패턴: MVC (Model 2)
-- 오픈 Library: jQuery v3.4.1, jQueryUI, randomNickUI,
+- 오픈 Library: jQuery v3.4.1, jQueryUI, randomNickUI
 - 프로젝트 소개: 캠핑장 예약 페이지와 관리 시스템을 통합하여 하나의 프로그램으로 이용 및 관리할 수 있는 통합형 캠핑장 예약 관리 시스템이다
 
 메인페이지 img
